@@ -1,0 +1,19 @@
+[user]
+    name = Pierre Wacrenier
+    email = pierre.wacrenier@gmail.com
+
+[color]
+    ui = true
+
+[alias]
+    st = status -bs
+    co = checkout
+    ci = commit
+    b = branch -avv
+    topush = log --branches="*" --oneline --not --remotes
+    lg = log --graph --oneline --decorate=short
+[core]
+    excludesfile = ~/.gitignore_global
+
+[push]
+    default = current

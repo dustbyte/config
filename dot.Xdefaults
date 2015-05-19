@@ -1,0 +1,29 @@
+!! Colors
+#include ".conf/colors/wombat2"
+
+
+XTerm*cursorColor:	    cyan
+XTerm*background:	    black
+XTerm*foreground:	    white
+XTerm*boldColors:	    on
+XTerm*termName:		    xterm-256color
+XTerm*scrollBar:	    false
+
+URxvt*termName:	        xterm-256color
+
+URxvt*background:	    black
+URxvt*foreground:	    white
+URxvt*cursorColor:	    cyan
+URxvt*scrollBar:	    false
+
+URxvt256c*background:	black
+URxvt256c*foreground:	white
+URxvt256c*cursorColor:	cyan
+URxvt256c*scrollBar:	false
+
+URxvt*iso14755:         False
+URxvt*iso14755_52:      False
+
+!URxvt*font:		   xft:Dejavu Sans Mono:pixelsize=13
+
+*metaSendsEscape:	    true

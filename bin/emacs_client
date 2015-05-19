@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DAEMON_NAME="default"
+
+if [ -n "$VIRTUAL_ENV" ]
+then
+    DAEMON_NAME=`basename $VIRTUAL_ENV`
+fi
+
+if [ $# -gt 0 ] && [ $1 = "-Z" ]
+then
+    DAEMON_NAME=$2
+    shift
+    shift
+fi
+
+PID=`ps ax | grep -iE -- "emacs.*--daemon=.*${DAEMON_NAME}" | grep -v grep | awk '{print $1}'`
+[ -z "${PID}" ] && emacs_server start $DAEMON_NAME
+
+emacsclient -s $DAEMON_NAME -c "$@"

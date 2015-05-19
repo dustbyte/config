@@ -1,0 +1,11 @@
+#!/bin/sh
+
+LIST=`ps aux | grep -E "perl.*jogsoul" | grep -v grep`
+
+for process in "$LIST"
+do
+    p_id=`echo "$process" | cut -d ' ' -f 12`
+    [ "$p_id" != '' ] && kill -9 "$p_id"
+done
+
+[ "$1" != 'kill' ] && perl ~/bin/jogsoul.pl ~/bin/jogsoul.conf
