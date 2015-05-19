@@ -1,0 +1,87 @@
+set realname = "Pierre Wacrenier"
+set from = "mota@souitom.org"
+set signature = ~/.signature
+
+set spoolfile = /var/spool/mail/$USER
+set folder = ~/mail
+set tmpdir = /tmp
+
+set charset = UTF-8
+set locale = en_US.UTF-8
+
+set delete = yes
+
+ignore *
+unignore From:
+unignore To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+unignore User-Agent:
+
+hdr_order From: Subject: To: CC: BCC: Date: User-Agent:
+
+set sort = threads
+
+set sort_aux = date-sent
+
+set visual = builtin
+
+set pager_stop = yes
+set smart_wrap = yes
+
+set pager_context = 3
+
+set quote_regexp = "^([ \t]*[|>/])+"
+set markers = yes
+
+set editor = "perl ~/.mutt/killsig.pl %s; /usr/bin/vim %s"
+
+
+set attribution = "On %d, %n wrote:"
+set forward_decrypt = yes
+set forward_decode = yes
+set forward_format = "[Fws: %s]"
+set forward_quote
+
+set mbox_type = mbox
+
+set mbox      = +inbox
+set record    = +sent
+set postponed = +postponed
+
+set read_inc  = 1
+set write_inc = 1
+
+set move = no
+
+set shell = "/usr/bin/zsh"
+
+set mark_old = no
+
+set use_from = yes
+
+set copy=yes
+
+set indent_string = "> "
+
+# Colors
+source ~/.mutt/calmar.dark
+
+# PGP
+source ~/.mutt/gpg.rc
+set crypt_replyencrypt
+set crypt_replysign
+set crypt_replysignencrypted
+set crypt_autosign=yes
+set pgp_mime_signature_filename="signature.asc"
+set pgp_timeout=600
+my_hdr X-PGP-Key: http://souitom.org/mota.asc
+
+# Key bindings
+bind index N search-opposite
+bind pager N search-opposite
+bind index i toggle-new
+bind index S sort-mailbox
+bind index o display-message

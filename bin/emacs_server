@@ -1,0 +1,37 @@
+#!/bin/sh
+
+DAEMON_NAME="default"
+
+if [ -n "$VIRTUAL_ENV" ]
+then
+    DAEMON_NAME=`basename $VIRTUAL_ENV`
+fi
+
+[ $# -gt 1 ] && DAEMON_NAME=$2
+
+case "$1" in
+    start)
+        emacs "--daemon=${DAEMON_NAME}" > /dev/null
+        ;;
+    stop)
+        PID=`ps ax | grep -iE -- "emacs.*--daemon=.*${DAEMON_NAME}" | grep -v grep | awk '{print $1}'`
+        if [ -n "${PID}" ]
+        then
+            echo "Stopping emacs daemon ${DAEMON_NAME} with PID ${PID}"
+            kill $PID
+        fi
+        ;;
+    restart)
+        $0 stop $DAEMON_NAME
+        $0 start $DAEMON_NAME
+        ;;
+    help)
+        echo "usage: $0 {start|stop|restart|help[|list]}"
+        ;;
+    *)
+        LIST=`ps ax | grep -iE -- "emacs.*--daemon=" | grep -v grep | awk '{print $1 "\t| " $6}' | sed 's/--daemon=//g'`
+        [ -n "${LIST}" ] && echo "${LIST}"
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,15 @@
+#!/usr/bin/zsh
+
+global_sitepackage='/usr/lib/python2.7/site-packages'
+sitepackage="`virtualenvwrapper_get_site_packages_dir`"
+
+__create_link()
+{
+    ln -sf $global_sitepackage/$1 $sitepackage/$1
+}
+
+__create_link jedi
+__create_link epc
+__create_link pyflakes
+__create_link sexpdata.py
+__create_link bpython

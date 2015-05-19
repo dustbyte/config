@@ -1,0 +1,143 @@
+# Behavior
+workspace_layout stacking
+#workspace_layout stack-limit cols 1
+
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# font for window titles. ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# PulseAudio
+bind	$mod+21 exec amixer -D pulse sset Master 2%+
+bind	$mod+20 exec amixer -D pulse sset Master 2%-
+
+
+bind	123 exec amixer -c 1 sset PCM 1%+
+bind	122 exec amixer -c 1 sset PCM 1%-
+bindsym $mod+p exec mpc toggle
+bind	$mod+35 exec mpc next
+bind	$mod+34 exec mpc prev
+
+# Shortcuts
+bindsym $mod+a exec dmenu_run -nb "#252525" -nf "#e3e3e3" -sb "#1e5e8a"
+bind	$mod+36 exec urxvt
+bind	$mod+47 exec xtrlock
+bindsym $mod+u exec (setxkbmap us_qwerty-fr && xmodmap ~/.Xmodmap)
+bindsym $mod+i exec setxkbmap fr
+
+## WM ##
+
+# kill focused window
+bindsym $mod+Shift+Q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Tab focus right
+bindsym $mod+q focus down
+
+bind $mod+49 focus output right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+#bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout splitv
+#bindsym $mod+e layout default
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+default_orientation vertical
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+exclam move workspace 1
+bindsym $mod+Shift+at move workspace 2
+bindsym $mod+Shift+numbersign move workspace 3
+bindsym $mod+Shift+dollar move workspace 4
+bindsym $mod+Shift+percent move workspace 5
+bindsym $mod+Shift+asciicircum move workspace 6
+bindsym $mod+Shift+ampersand move workspace 7
+bindsym $mod+Shift+asterisk move workspace 8
+bindsym $mod+Shift+parenleft move workspace 9
+bindsym $mod+Shift+parenright move workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+C reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+R restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+E exit
+
+mode "resize" {
+        bindsym h resize grow left
+        bindsym Shift+h resize shrink left
+
+        bindsym j resize grow down
+        bindsym Shift+j resize shrink down
+
+        bindsym k resize grow up
+        bindsym Shift+k resize shrink up
+
+        bindsym l resize grow right
+        bindsym Shift+l resize shrink right
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# Enter resize mode
+bindsym $mod+r mode "resize"
+
+bar {
+    status_command i3status --config ~/.i3/i3status.conf
+    tray_output DVI-1
+}
