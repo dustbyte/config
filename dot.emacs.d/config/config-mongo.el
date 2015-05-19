@@ -12,8 +12,12 @@
                 (mongo-send-region start end))
               )
 
-            (global-set-key (kbd "C-c C-p") 'mongo-send-paragraph)
-            (global-set-key (kbd "C-c m") 'mongo-send-region)
+            (add-hook 'web-mode-hook
+                      (lambda ()
+                        (local-set-key (kbd "C-c C-s") 'mongo-send-paragraph)
+                        (local-set-key (kbd "C-c m") 'mongo-send-region)
+                        )
+                      )
 
             )
 
