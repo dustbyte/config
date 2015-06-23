@@ -329,7 +329,7 @@ export GROFF_NO_SGR=1
 #
 
 alias df='df -h'
-alias ls='ls -CF --color'
+alias ls='ls -CF --color=auto'
 alias l='ls -lh'
 alias ll=l
 alias la='ls -lA'
