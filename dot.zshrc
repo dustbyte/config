@@ -180,8 +180,8 @@ openbsd()
 
     if [ "$OSNAME" = "OpenBSD" ]
     then
-        FTP_SITE="ftp://ftp.fr.openbsd.org"
-        export PKG_PATH="$FTP_SITE/pub/OpenBSD/snapshots/packages/`uname -m`/"
+        FTP_SITE="ftp://ftp.nluug.nl"
+        export PKG_PATH="$FTP_SITE/pub/OpenBSD/`uname -r`/packages/`uname -m`/"
         export PACKAGE_PATH=$PKG_PATH
 
         if check_command colorls
