@@ -9,10 +9,12 @@ let c_no_curly_error = 1
 
 " ---------------------------------------------------------------------------
 " operational settings
-let maplocalleader=','          " all my macros start with ,
+" let maplocalleader=','          " all my macros start with ,
+let mapleader="\<Space>"
+let maplocalleader="\<Space>"
 
 set nocompatible                " vim defaults, not vi!
-filetype plugin on 		" enable plugins
+filetype plugin on 		        " enable plugins
 syntax on                       " syntax on
 filetype on                     " automatic file type detection
 
@@ -29,12 +31,22 @@ set scrolloff=5                 " keep at least 5 lines above/below cursor
 set sidescrolloff=5             " keep at least 5 columns left/right of cursor
 set history=300                 " remember the last 300 commands
 set showcmd
+set ignorecase
 
 " ---------------------------------------------------------------------------
 " meta
-map <LocalLeader>ce :edit ~/.vimrc<cr>          " quickly edit this file
-map <LocalLeader>cs :source ~/.vimrc<cr>        " quickly source this file
-map <LocalLeader>o  O<ESC>			" append a line without moving the curso
+nmap <Leader>ce :edit ~/.vimrc<cr>           " quickly edit this file
+nmap <Leader>cs :source ~/.vimrc<cr>         " quickly source this file
+nmap <Leader>o  O<ESC>			            " append a line without moving the curso
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader>h :h <C-r><C-w><CR>
 
 inoremap <Tab> <tab>
 vnoremap <Tab> =
@@ -55,7 +67,7 @@ set mouse=a                     " mouse support in all modes
 set mousehide                   " hide the mouse when typing text
 
 " ,p and shift-insert will paste the X buffer, even on the command line
-nmap <LocalLeader>p i<S-MiddleMouse><ESC>
+nmap <Leader>p i<S-MiddleMouse><ESC>
 imap <S-Insert> <S-MiddleMouse>
 cmap <S-Insert> <S-MiddleMouse>
 
@@ -90,7 +102,7 @@ set hlsearch                   " enable search highlight globally
 set incsearch                  " show matches as soon as possible
 set showmatch                  " show matching brackets when typing
 " disable last one highlight
-nmap <LocalLeader>nh :nohlsearch<cr>
+nmap <Leader>nh :nohlsearch<cr>
 
 set diffopt=filler,iwhite       " ignore all whitespace and sync
 
@@ -103,7 +115,7 @@ let loaded_yankring = 22
 " Y yanks from cursor to $
 map Y y$
 " toggle paste mode
-nmap <LocalLeader>pp :set paste!<cr>
+nmap <Leader>pp :set paste!<cr>
 " correct type-o's on exit
 nmap q: :q
 
@@ -196,7 +208,7 @@ endif
 "  configure calendar
 let g:calendar_monday = 1
 
-nmap <LocalLeader>o O <Esc>
+nmap <Leader>o O <Esc>
 
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
