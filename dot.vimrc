@@ -1,4 +1,19 @@
 "
+" Plugins
+"
+
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+call vundle#end()
+filetype plugin indent on
+
+"
 " Settings
 "
 
@@ -132,8 +147,6 @@ endif
 
 if has('autocmd')
     syntax on
-    filetype on
-    filetype plugin on
 
     " Jump to last cursor position according to viminfo
     autocmd BufReadPost *
