@@ -9,6 +9,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdcommenter'
 
 call vundle#end()
 filetype plugin indent on
@@ -72,12 +75,11 @@ set cino=>4{2u0e2(0N-st0g0
 " Bindings
 "
 
-nmap <Leader>ce :edit ~/.vimrc<cr>      " quickly edit this file
-nmap <Leader>cs :source ~/.vimrc<cr>    " quickly source this file
+nmap <Leader>ve :edit ~/.vimrc<cr>      " quickly edit this file
+nmap <Leader>vs :source ~/.vimrc<cr>    " quickly source this file
 nmap <Leader>o  O<ESC>                  " append a line without moving the curso
 vmap <Leader>y "+y
 vmap <Leader>d "+d
-nmap <Leader>p "+p
 nmap <Leader>P <ESC>"+P
 vmap <Leader>p <ESC>"+p
 
