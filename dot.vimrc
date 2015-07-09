@@ -84,13 +84,11 @@ set cino=>4{2u0e2(0N-st0g0
 nmap <Leader>ve :edit ~/.vimrc<cr>      " quickly edit this file
 nmap <Leader>vs :source ~/.vimrc<cr>    " quickly source this file
 
-
-
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>P <ESC>"+P
-vmap <Leader>p <ESC>"+p
-nmap <Leader>o O<ESC>                  " append a line without moving the cursor
+nmap <Leader>p <ESC>"+p
+nmap <Leader>o O<ESC>                   " append a line without moving the cursor
 
 nmap <Leader>nh :nohlsearch<cr>
 
