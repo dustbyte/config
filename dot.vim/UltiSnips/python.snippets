@@ -1,0 +1,17 @@
+snippet defmain "main function" b
+def main():
+    """
+    Entry Point
+    """
+    $1
+endsnippet
+
+snippet aparser "Argument Parser" b
+parser = ArgumentParser()
+$1
+args = parser.parse_args()
+endsnippet
+
+snippet addarg "Add argument for arg parser" b
+parser.add_argument("$1"$2)
+endsnippet
