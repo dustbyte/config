@@ -1,7 +1,7 @@
 #!/bin/sh
 
 usage() {
-    echo "git_change_email old_email new_email"
+    echo "$(basename $0): old_email new_email"
     exit 255
 }
 
