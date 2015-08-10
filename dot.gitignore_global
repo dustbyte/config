@@ -25,3 +25,4 @@ auto-save-list
 shadow/
 .fuse_hidden*
 dot.vim/bundle/*
+.#*
