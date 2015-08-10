@@ -15,9 +15,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/AutoComplPop'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+" Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 filetype plugin indent on
@@ -83,6 +82,7 @@ set cino=>4{2u0e2(0N-st0g0
 
 nmap <Leader>ve :edit ~/.vimrc<cr>      " quickly edit this file
 nmap <Leader>vs :source ~/.vimrc<cr>    " quickly source this file
+nmap <Leader>sp :set paste!<cr>         " toggle paste mode
 
 vmap <Leader>y "+y
 vmap <Leader>d "+d
