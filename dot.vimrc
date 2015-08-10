@@ -15,7 +15,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/AutoComplPop'
-" Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-surround'
 
 call vundle#end()
@@ -88,7 +87,7 @@ vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>P <ESC>"+P
 nmap <Leader>p <ESC>"+p
-nmap <Leader>o O<ESC>                   " append a line without moving the cursor
+map <LocalLeader>o  O<ESC>              " append a line without moving the cursor
 
 nmap <Leader>nh :nohlsearch<cr>
 
