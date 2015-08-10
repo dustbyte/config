@@ -1,0 +1,14 @@
+#!/bin/sh
+
+usage() {
+    echo "$(basename $0): username email"
+    exit 255
+}
+
+[ $# -lt 2 ] && usage
+
+USERNAME=$1
+EMAIL=$2
+
+git config user.name "$USERNAME"
+git config user.email "$EMAIL"
