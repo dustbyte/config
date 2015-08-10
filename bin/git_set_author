@@ -5,10 +5,22 @@ usage() {
     exit 255
 }
 
-[ $# -lt 2 ] && usage
+USERNAME=""
+EMAIL=""
 
-USERNAME=$1
-EMAIL=$2
+if [ $# -lt 2 ]
+then
+    if [ -z "$GIT_DEFAULT_USERNAME" ] || [ -z "$GIT_DEFAULT_USER_EMAIL" ]
+    then
+        usage
+    else
+        USERNAME="$GIT_DEFAULT_USERNAME"
+        EMAIL="$GIT_DEFAULT_USER_EMAIL"
+    fi
+else
+        USERNAME="$1"
+        EMAIL="$2"
+fi
 
 git config user.name "$USERNAME"
 git config user.email "$EMAIL"
