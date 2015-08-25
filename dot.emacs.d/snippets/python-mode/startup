@@ -1,0 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+$1
+"""
+
+
+def main():
+    """
+    Entry point
+    """
+    ${2:pass}
+
+if __name__ == '__main__':
+   main()
