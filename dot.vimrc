@@ -16,6 +16,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'tpope/vim-surround'
+Plugin 'hynek/vim-python-pep8-indent'
 
 call vundle#end()
 filetype plugin indent on
