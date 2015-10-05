@@ -1,0 +1,3 @@
+parser = ArgumentParser()
+$0
+args = parser.parse_args()
