@@ -8,7 +8,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.Vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.Vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
