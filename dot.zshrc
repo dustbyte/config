@@ -281,9 +281,17 @@ venv_py()
 
 go_setup()
 {
+    local GOROOT_DIRECTORY=${HOME}/bin/go
+
+    if [ -d ${GOROOT_DIRECTORY} ]
+    then
+        export GOROOT=${GOROOT_DIRECTORY}
+        export PATH=${PATH}:${GOROOT}/bin
+    fi
+
     local GOPATH_DIRECTORY="${HOME}/work/go"
 
-    if [ -d "$GOPATH_DIRECTORY"  ]
+    if [ -d ${GOPATH_DIRECTORY}  ]
     then
         export GOPATH="$GOPATH_DIRECTORY"
         export PATH=${PATH}:${GOPATH}/bin
