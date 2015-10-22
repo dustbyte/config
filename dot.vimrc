@@ -17,6 +17,7 @@ Plugin 'Shougo/neocomplete.vim'
 Plugin 'vim-scripts/AutoComplPop'
 Plugin 'tpope/vim-surround'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 filetype plugin indent on
@@ -172,8 +173,27 @@ if has('autocmd')
     au BufRead,BufNewFile Capfile set filetype=ruby
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+    autocmd CompleteDone * pclose
 
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
+
+    "
+    " Go
+    "
+
+    autocmd FileType go setlocal tabstop=8 shiftwidth=8 noexpandtab
+
+    au FileType go nmap <leader>gr <Plug>(go-run)
+    au FileType go nmap <leader>gb <Plug>(go-build)
+    au FileType go nmap <leader>gt <Plug>(go-test)
+    au FileType go nmap <leader>gc <Plug>(go-coverage)
+    au FileType go nmap <Leader>gd <Plug>(go-def-vertical)
+    au FileType go nmap <Leader>gD <Plug>(go-doc-vertical)
+    au FileType go nmap <Leader>gi <Plug>(go-implements)
+    au FileType go nmap <Leader>gI <Plug>(go-info)
+    au FileType go nmap <Leader>gR <Plug>(go-rename)
+
+    let g:go_fmt_command = "goimports"
 
 endif
 
