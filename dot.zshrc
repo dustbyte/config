@@ -39,7 +39,7 @@ zstyle ':completion:*:*:(^rm):*:*files' ignored-patterns '*?.o' '*?.c~' '*?.old'
 zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
-compinit
+compinit -u
 
 HISTFILE=~/.histfile
 HISTSIZE=100
