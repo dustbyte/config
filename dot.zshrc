@@ -359,6 +359,7 @@ alias school='ssh wacren_p@ssh.epitech.net'
 alias tunnel=tunnel
 alias st=st_open
 alias bpython='bpython -q'
+alias ri="echo card"
 
 check_command gvim && alias vim='gvim -v'
 
