@@ -171,9 +171,10 @@ if has('autocmd')
     au BufRead,BufNewFile *.go set filetype=go
     au BufRead,BufNewFile *.wsgi set filetype=python
     au BufRead,BufNewFile Capfile set filetype=ruby
+    au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-    autocmd CompleteDone * pclose
+    "autocmd CompleteDone * pclose
 
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
 
