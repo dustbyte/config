@@ -3,7 +3,7 @@
 xset -b
 xset s off
 xset -dpms
-xset r rate 250 25
+xset r rate 200
 
 if [ `which xmodmap` ]
 then
