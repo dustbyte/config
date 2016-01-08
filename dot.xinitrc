@@ -1,6 +1,9 @@
 #!/bin/sh
 
-xset -b&
+xset -b
+xset s off
+xset -dpms
+xset r rate 250 25
 
 if [ `which xmodmap` ]
 then
