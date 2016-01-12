@@ -3,7 +3,8 @@
 xset -b
 xset s off
 xset -dpms
-xset r rate 200
+xset r rate 275
+setxkbmap -option caps:none
 
 if [ `which xmodmap` ]
 then

@@ -64,6 +64,7 @@
  '(mouse-wheel-follow-mouse 't)
  '(mouse-wheel-scroll-amount '(1 ((shift) . 1)))
  '(electric-indent-mode t)
+ '(visible-cursor nil)
 )
 
 ;; Misc options
