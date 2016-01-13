@@ -41,10 +41,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+q exec ~/.i3/scripts/i3-cycle.py container
-bindsym $mod+Tab exec ~/.i3/scripts/i3-cycle.py window
+bindsym $mod+q exec i3-cycle container
+bindsym $mod+Tab exec i3-cycle window
 
-bind $mod+49 exec ~/.i3/scripts/i3-cycle.py output
+bind $mod+49 exec i3-cycle output
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
