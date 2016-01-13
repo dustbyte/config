@@ -41,10 +41,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+q focus up
-bindsym $mod+w focus down
+bindsym $mod+q exec ~/.i3/scripts/i3-cycle.py container
+bindsym $mod+Tab exec ~/.i3/scripts/i3-cycle.py window
 
-bind $mod+49 focus output right
+bind $mod+49 exec ~/.i3/scripts/i3-cycle.py output
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -53,6 +53,8 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bind	$mod+34 focus left
 bind	$mod+35 focus right
+
+bindsym $mod+x [urgent=latest] focus
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -69,12 +71,6 @@ bindsym $mod+Shift+Right move right
 bind $mod+Shift+35 move workspace to output HDMI1
 bind $mod+Shift+34 move workspace to output HDMI2
 bind $mod+Shift+36 move workspace to output eDP1
-
-# split in horizontal orientation
-#bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -104,6 +100,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+
+bindsym $mod+z workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+exclam move workspace 1
