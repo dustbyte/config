@@ -86,7 +86,9 @@ nmap <Leader>vs :source ~/.vimrc<cr>    " quickly source this file
 nmap <Leader>sp :set paste!<cr>         " toggle paste mode
 
 vmap <Leader>y "+y
+vmap <Leader>Y "*y
 vmap <Leader>d "+d
+vmap <Leader>D "*d
 nmap <Leader>P <ESC>"+P
 nmap <Leader>p <ESC>"+p
 map <LocalLeader>o  O<ESC>              " append a line without moving the cursor
