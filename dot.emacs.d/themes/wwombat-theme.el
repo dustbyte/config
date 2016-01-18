@@ -45,7 +45,7 @@
 
      ;; Comments
      `(font-lock-comment-delimiter-face ((t (:foreground ,gold))))
-     `(font-lock-comment-face ((t (:foreground ,gold :slant italic))))
+     `(font-lock-comment-face ((t (:foreground ,gold))))
 
      `(linum ((t (:foreground "#6B5B2C" :background "#111111"))))
      `(highlight ((t (:background "gray15" :height 1.0 :weight normal))))
