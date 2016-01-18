@@ -315,6 +315,21 @@ spot()
     grep "$SPOT_ARGS" "$opts" "$pattern" $spath
 }
 
+ssh_agent_start()
+{
+    local pid=$(pgrep ssh-agent)
+    local ssh_agent_file=${HOME}/.ssh_agent.sh
+
+    if [ "$pid" = "" ]
+    then
+        [ -f "${ssh_agent_file}" ] && rm -f "${ssh_agent_file}"
+        ssh-agent -s | grep -v echo > "${ssh_agent_file}"
+    fi
+
+    [ -f "${ssh_agent_file}" ] && source "${ssh_agent_file}"
+    ssh-add 2> /dev/null
+}
+
 #
 # Vars
 #
@@ -416,6 +431,7 @@ darwin
 prompt
 venv_py
 go_setup
+ssh_agent_start
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
