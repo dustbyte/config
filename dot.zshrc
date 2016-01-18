@@ -431,7 +431,6 @@ darwin
 prompt
 venv_py
 go_setup
-ssh_agent_start
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
