@@ -41,10 +41,10 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+q exec i3-cycle container
-bindsym $mod+Tab exec i3-cycle window
+bindsym $mod+q exec i3-cycle down
+bindsym $mod+Tab exec i3-cycle right
 
-bind $mod+49 exec i3-cycle output
+# bind $mod+49 exec i3-cycle output
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
