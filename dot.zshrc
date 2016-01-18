@@ -76,11 +76,6 @@ vman()
     man $1 | col -b | vim -c "set ft=man" -R -
 }
 
-tunnel()
-{
-    ssh -fND localhost:3128 mota@souitom.org
-}
-
 tmpwrite()
 {
   chmod u+w "$1"
@@ -227,11 +222,6 @@ netbsd()
     fi
 }
 
-set_ruby19()
-{
-    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-}
-
 darwin()
 {
     if [ "$OSNAME" = "Darwin" ]
@@ -260,14 +250,7 @@ darwin()
             export DYLD_FALLBACK_LIBRARY_PATH=$SAVE
         }
         alias psql=_psql
-
-        set_ruby19
     fi
-}
-
-st_open()
-{
-    touch $1 && sublime_text $1
 }
 
 venv_py()
@@ -296,6 +279,40 @@ go_setup()
         export GOPATH="$GOPATH_DIRECTORY"
         export PATH=${PATH}:${GOPATH}/bin
     fi
+}
+
+spot()
+{
+    pattern=""
+    opts="-nRE"
+    spath="."
+    while [  "$#" != "0" ]
+    do
+        case "$1" in
+            "-i")
+            opts=$opts"i"
+            ;;
+            "-d")
+            if [ $spath = '.' ]
+            then
+                spath="$2"
+            else
+                spath=$spath "$2"
+            fi
+            shift
+            ;;
+            *)
+            if [ "$pattern" = "" ]
+            then
+                pattern="$1"
+            else
+                pattern="$pattern $1"
+            fi
+        esac
+        shift
+    done
+
+    grep "$SPOT_ARGS" "$opts" "$pattern" $spath
 }
 
 #
@@ -356,8 +373,6 @@ alias vimpager='vim -R -'
 alias miamstylo=spot
 alias qui="~/bin/qui.py"
 alias school='ssh wacren_p@ssh.epitech.net'
-alias tunnel=tunnel
-alias st=st_open
 alias bpython='bpython -q'
 alias ri="echo card"
 
@@ -377,7 +392,7 @@ alias drmall='docker rm -f $(docker ps -qa)'
 alias dflush='docker rm -f $(docker ps -a | awk "/Exited/ {print \$1}") 2>/dev/null'
 alias dflushi='docker rmi -f $(docker images | awk "/<none>/ {print \$3}") 2>/dev/null'
 alias dclean='echo "removed containers:" && dflush ; echo "\nremoved images:" && dflushi'
-alias dwork='cd ${HOME}/work/go/src/github.com/docker/'
+alias cddocker='cd ${HOME}/work/go/src/github.com/docker/'
 alias drmi=docker_rmi_repository
 
 #
@@ -401,40 +416,6 @@ darwin
 prompt
 venv_py
 go_setup
-
-spot()
-{
-    pattern=""
-    opts="-nRE"
-    spath="."
-    while [  "$#" != "0" ]
-    do
-        case "$1" in
-            "-i")
-            opts=$opts"i"
-            ;;
-            "-d")
-            if [ $spath = '.' ]
-            then
-                spath="$2"
-            else
-                spath=$spath "$2"
-            fi
-            shift
-            ;;
-            *)
-            if [ "$pattern" = "" ]
-            then
-                pattern="$1"
-            else
-                pattern="$pattern $1"
-            fi
-        esac
-        shift
-    done
-
-    grep "$SPOT_ARGS" "$opts" "$pattern" $spath
-}
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
