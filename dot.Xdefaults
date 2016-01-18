@@ -9,7 +9,7 @@ XTerm*boldColors:	    on
 XTerm*termName:		    xterm-256color
 XTerm*scrollBar:	    false
 
-URxvt*termName:	        xterm-256color
+!URxvt*termName:	        xterm-256color
 
 URxvt*background:	    black
 URxvt*foreground:	    white
