@@ -10,9 +10,8 @@ if [ -f ~/.xinitrc_local ]; then
     sh ~/.xinitrc_local
 fi
 
-if [ `which xmodmap` ]
-then
-    xmodmap ~/.Xmodmap&
+if [ -s ~/.Xmodmap ]; then
+    xmodmap ~/.Xmodmap
 fi
 
 exec i3

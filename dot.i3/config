@@ -25,7 +25,7 @@ bindsym $mod+p exec mpc toggle
 
 # Shortcuts
 bindsym $mod+a exec dmenu_run -nb "#252525" -nf "#e3e3e3" -sb "#1e5e8a"
-bind	$mod+36 exec urxvt
+bind	$mod+36 exec xterm
 bind	$mod+47 exec slock
 bindsym $mod+u exec (setxkbmap us_qwerty-fr && xmodmap ~/.Xmodmap)
 bindsym $mod+i exec setxkbmap fr

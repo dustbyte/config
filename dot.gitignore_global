@@ -27,3 +27,6 @@ shadow/
 dot.vim/bundle/*
 .#*
 __pycache__
+.cache
+.eggs
+dist

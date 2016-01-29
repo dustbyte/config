@@ -1,3 +1,4 @@
+!URxvt
 !black
 urxvt.color0: #353535
 urxvt.color8: #666666
@@ -32,3 +33,40 @@ Urxvt.color15: #FFFFFF
 
 urxvt.background: #1C1C1C
 urxvt.foreground: #DDDDDD
+
+
+!XTerm
+!black
+xterm*color0: #353535
+xterm*color8: #666666
+
+!red
+xterm*color1: #E5786D
+xterm*color9: #E5786D
+
+!green
+xterm*color2: #95E454
+xterm*color10: #CAE682
+
+!brown/yellow
+xterm*color3: #F7E78C
+xterm*color11: #FFF796
+
+!blue
+xterm*color4: #1a6a8c
+xterm*color12: #4186BE
+
+!magenta
+xterm*color5: #CC99CC
+xterm*color13: #CF9EBE
+
+!cyan
+xterm*color6: #A7A15E
+xterm*color14: #F0E68C
+
+!white
+xterm*color7: #BEBEBE
+xterm*color15: #FFFFFF
+
+xterm*background: #1C1C1C
+xterm*foreground: #DDDDDD
