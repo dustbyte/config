@@ -6,12 +6,59 @@ def main():
     $1
 endsnippet
 
+snippet ifmain "If current module is __main__" b
+if __name__ == "__main__":
+    main()
+endsnippet
+
+snippet startup "Python template" b
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+${1:Module doc}
+"""
+
+${2}
+
+def main():
+    """
+    Entry Point
+    """
+    ${3:pass}
+
+
+if __name__ == "__main__":
+    main()
+
+endsnippet
+
+snippet module "Startup for modules" b
+# -*- coding: utf-8 -*-
+
+"""
+${1:Module doc}
+"""
+
+
+${2}
+endsnippet
+
+snippet argparse "Import argparse parser" b
+from argparse import ArgumentParser
+endsnippet
+
 snippet aparser "Argument Parser" b
 parser = ArgumentParser()
 $1
 args = parser.parse_args()
+
 endsnippet
 
 snippet addarg "Add argument for arg parser" b
-parser.add_argument("$1"$2)
+parser.add_argument("$1")
+endsnippet
+
+snippet pdb "Set a pdb breakpoint" b
+import pdb; pdb.set_trace()
 endsnippet
