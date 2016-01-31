@@ -18,6 +18,7 @@ Plugin 'vim-scripts/AutoComplPop'
 Plugin 'tpope/vim-surround'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
+Plugin 'SirVer/ultisnips'
 
 call vundle#end()
 filetype plugin indent on
