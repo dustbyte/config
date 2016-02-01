@@ -19,6 +19,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -180,6 +181,7 @@ if has('autocmd')
     "autocmd CompleteDone * pclose
 
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
+    autocmd FileType python setlocal completeopt-=preview
 
     "
     " Go
