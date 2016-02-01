@@ -19,7 +19,7 @@ snippet startup "Python template" b
 ${1:Module doc}
 """
 
-${2}
+$2
 
 def main():
     """
@@ -41,7 +41,7 @@ ${1:Module doc}
 """
 
 
-${2}
+$2
 endsnippet
 
 snippet argparse "Import argparse parser" b
@@ -61,4 +61,12 @@ endsnippet
 
 snippet pdb "Set a pdb breakpoint" b
 import pdb; pdb.set_trace()
+endsnippet
+
+snippet pprint "Pretty print an object" b
+from pprint import pprint; pprint($1)
+endsnippet
+
+snippet pformat "Pretty format an object" b
+from pprint import pformat; format = pformat($1)
 endsnippet
