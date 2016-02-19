@@ -94,6 +94,8 @@ vmap <Leader>D "*d
 nmap <Leader>P <ESC>"+P
 nmap <Leader>p <ESC>"+p
 map <LocalLeader>o  O<ESC>              " append a line without moving the cursor
+map <Leader>ld "_d
+map <Leader>lp "_dP
 
 nmap <Leader>nh :nohlsearch<cr>
 
