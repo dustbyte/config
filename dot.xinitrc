@@ -15,3 +15,7 @@ if [ -s ~/.Xmodmap ]; then
 fi
 
 exec i3
+
+# simple hint for "natural scrolling" via xinput
+# xinput set-prop (id) 274 -91 91
+# the 274 91 91 values are obtained via xinput list-props id | grep "Scrolling Distance"
