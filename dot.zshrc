@@ -390,7 +390,7 @@ alias qui="~/bin/qui.py"
 alias school='ssh wacren_p@ssh.epitech.net'
 alias bpython='bpython -q'
 alias ri="echo card"
-alias ps='ps a o pid,state,euser,%cpu,%mem,etime,args'
+alias ps='ps a o pid,state,euser,%cpu,%mem,vsz,rss,etime,args'
 
 check_command gvim && alias vim='gvim -v'
 
