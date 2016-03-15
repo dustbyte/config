@@ -48,8 +48,6 @@ REPORTTIME=2 # show time when executions lasts longer than X seconds
 
 OSNAME=`uname -s`
 
-SPOT_ARGS='--color=auto'
-
 ulimit -c 0
 
 #
@@ -188,10 +186,12 @@ openbsd()
 
         if check_command ggrep
         then
-            alias grep='ggrep --color'
+            export GREP_COMMAND='ggrep'
+            export SPOT_ARGS='--color=auto'
+            alias grep="${GREP_COMMAND} --color=auto"
         else
             unalias grep
-            SPOT_ARGS=""
+            export SPOT_ARGS=""
         fi
     fi
 }
@@ -207,14 +207,14 @@ netbsd()
 
         if check_command gls
         then
-            alias ls='gls --color'
+            alias ls='gls --color=auto'
         else
             alias ls='ls'
         fi
 
         if check_command ggrep
         then
-            alias grep='ggrep --color'
+            alias grep='ggrep --color=auto'
         else
             unalias grep
             SPOT_ARGS=""
@@ -312,7 +312,7 @@ spot()
         shift
     done
 
-    grep "$SPOT_ARGS" "$opts" "$pattern" $spath
+    ${GREP_COMMAND:=grep} "${SPOT_ARGS}" "$opts" "$pattern" $spath
 }
 
 ssh_agent_start()
@@ -343,6 +343,7 @@ export SVN_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export MANPATH=/usr/man:/usr/X11R6/man:/usr/share/man:/usr/local/share/man:/usr/local/man
 export VIMHOME=$HOME/.vim
+export SPOT_ARGS="--color=auto"
 
 #
 # ls colors
@@ -373,7 +374,7 @@ alias ls='ls -vCF --color=auto'
 alias l='ls -lh'
 alias ll=l
 alias la='ls -lA'
-alias grep='grep --color'
+alias grep='grep --color=auto'
 alias sx='startx'
 alias stx='startx&;disown;exit'
 alias ne="emacs -nw"
