@@ -176,6 +176,7 @@ if has('autocmd')
 
     au BufRead,BufNewFile *.go set filetype=go
     au BufRead,BufNewFile *.wsgi set filetype=python
+    au BufRead,BufNewFile *xonshrc set filetype=python
     au BufRead,BufNewFile Capfile set filetype=ruby
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
