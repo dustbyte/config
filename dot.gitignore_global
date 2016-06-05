@@ -30,4 +30,4 @@ __pycache__
 .cache
 .eggs
 dist
-.rvmrc
+.rvmrc*
