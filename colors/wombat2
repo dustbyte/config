@@ -16,8 +16,8 @@ urxvt.color3: #F7E78C
 urxvt.color11: #FFF796
 
 !blue
-urxvt.color4: #1a6a8c
-urxvt.color12: #4186BE
+urxvt*color4: #7cb4e3
+urxvt*color12: #92badb
 
 !magenta
 urxvt.color5: #CC99CC
@@ -53,8 +53,8 @@ xterm*color3: #F7E78C
 xterm*color11: #FFF796
 
 !blue
-xterm*color4: #1a6a8c
-xterm*color12: #4186BE
+xterm*color4: #7cb4e3
+xterm*color12: #92badb
 
 !magenta
 xterm*color5: #CC99CC
