@@ -152,7 +152,7 @@ prompt()
     fi
 
     PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset@%m> '
-    RPROMPT='[$(scm_prompt)%~]'
+    RPROMPT=''
 }
 
 pkg_search()
@@ -432,6 +432,9 @@ darwin
 prompt
 venv_py
 go_setup
+
+LP_MARK_DEFAULT="$"
+[[ $- = *i*  ]] && . ${HOME}/.zsh/liquidprompt/liquidprompt
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
