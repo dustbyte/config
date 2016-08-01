@@ -434,8 +434,13 @@ venv_py
 go_setup
 
 LP_MARK_DEFAULT="$"
+LP_ENABLE_BATT=0
+LP_ENABLE_LOAD=0
+LP_ENABLE_TEMP=0
 [[ $- = *i*  ]] && . ${HOME}/.zsh/liquidprompt/liquidprompt
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
