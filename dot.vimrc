@@ -20,6 +20,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'slim-template/vim-slim.git'
 
 call vundle#end()
 filetype plugin indent on
