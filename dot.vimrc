@@ -21,6 +21,11 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'slim-template/vim-slim.git'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
+Bundle 'scrooloose/nerdtree'
+Plugin 'kchmck/vim-coffee-script'
 
 call vundle#end()
 filetype plugin indent on
