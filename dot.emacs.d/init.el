@@ -172,6 +172,7 @@
 
 ;; Possibly not provided configuration (in ~/.emacs.d/shadow)
 (on-require 'config-sql)
+(on-require 'config-postgre)
 (on-require 'config-mongodb)
 
 (on-require 'flycheck
