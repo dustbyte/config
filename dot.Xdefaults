@@ -10,6 +10,10 @@ XTerm*termName:		    xterm-256color
 XTerm*scrollBar:	    false
 XTerm*selectToClipboard:    true
 
+XTerm.VT100.translations: #override \
+Ctrl <Key> -: smaller-vt-font() \n\
+Ctrl <Key> =: larger-vt-font() \n
+
 !URxvt*termName:	        xterm-256color
 
 URxvt*background:	    black
