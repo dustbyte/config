@@ -185,12 +185,14 @@ if has('autocmd')
     au BufRead,BufNewFile *xonshrc set filetype=python
     au BufRead,BufNewFile Capfile set filetype=ruby
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
+    au BufRead,BufNewFile *.slim set filetype=slim
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
     "autocmd CompleteDone * pclose
 
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
     autocmd FileType python setlocal completeopt-=preview
+    autocmd FileType ruby setlocal ts=2 sts=2 sw=2
 
     "
     " Go

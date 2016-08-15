@@ -442,5 +442,3 @@ LP_ENABLE_TEMP=0
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
 fi
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
