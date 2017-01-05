@@ -9,6 +9,7 @@ XTerm*boldColors:	    on
 XTerm*termName:		    xterm-256color
 XTerm*scrollBar:	    false
 XTerm*selectToClipboard:    true
+XTerm*fullscreen:           never
 
 !XTerm.VT100.translations: #override \
 !Ctrl <Key> -: smaller-vt-font() \n\

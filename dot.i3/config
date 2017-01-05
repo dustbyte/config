@@ -69,7 +69,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bind $mod+Shift+35 move workspace to output DP1
+bind $mod+Shift+35 move workspace to output HDMI1
 bind $mod+Shift+34 move workspace to output HDMI2
 bind $mod+Shift+36 move workspace to output eDP1
 

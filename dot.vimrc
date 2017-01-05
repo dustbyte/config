@@ -21,11 +21,13 @@ Plugin 'fatih/vim-go'
 Plugin 'SirVer/ultisnips'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'slim-template/vim-slim.git'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
-Bundle 'scrooloose/nerdtree'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-rails'
+Plugin 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
@@ -93,13 +95,15 @@ nmap <Leader>ve :edit ~/.vimrc<cr>      " quickly edit this file
 nmap <Leader>vs :source ~/.vimrc<cr>    " quickly source this file
 nmap <Leader>sp :set paste!<cr>         " toggle paste mode
 
+noremap <Leader>f :call IndentWholeFile()<cr>
+
 vmap <Leader>y "+y
 vmap <Leader>Y "*y
 vmap <Leader>d "+d
 vmap <Leader>D "*d
 nmap <Leader>P <ESC>"+P
 nmap <Leader>p <ESC>"+p
-map <LocalLeader>o  O<ESC>              " append a line without moving the cursor
+noremap <LocalLeader>o :call DownOneLine()<cr>
 map <Leader>ld "_d
 map <Leader>lp "_dP
 
@@ -188,7 +192,6 @@ if has('autocmd')
     au BufRead,BufNewFile *.slim set filetype=slim
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
-    "autocmd CompleteDone * pclose
 
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
     autocmd FileType python setlocal completeopt-=preview
@@ -226,4 +229,16 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
+fun! IndentWholeFile()
+    let l = line(".")
+    let c = col(".")
+    :normal gg=G
+    call cursor(l, c)
+endfun
+
+fun! DownOneLine()
+    :execute "normal! I\<cr>\<esc>k0D"
+endfun
+
 let g:jedi#popup_select_first=0
+let g:closetag_filenames = "*.html"

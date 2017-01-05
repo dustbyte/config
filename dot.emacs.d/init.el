@@ -156,6 +156,8 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-^") (lambda () (interactive) (delete-indentation 1)))
 (global-set-key (kbd "C-x p") 'pwd)
+(global-set-key (kbd "<backtab>") (lambda () (interactive) (let ((current-prefix-arg -4)) (call-interactively 'indent-rigidly))))
+
 
 ;; Saveplace file
 (setq save-place-file "~/.saveinfo")
@@ -184,3 +186,11 @@
                         )
               )
             )
+
+
+;; Try
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-iswitchb)
