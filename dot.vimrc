@@ -190,6 +190,7 @@ if has('autocmd')
     au BufRead,BufNewFile Capfile set filetype=ruby
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
     au BufRead,BufNewFile *.slim set filetype=slim
+    au BufRead,BufNewFile nginx.conf* set filetype=conf
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -242,3 +243,7 @@ endfun
 
 let g:jedi#popup_select_first=0
 let g:closetag_filenames = "*.html"
+
+let g:NERDCustomDelimiters = {
+    \ 'dnsmasq': { 'left': '#' }
+\}
