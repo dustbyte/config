@@ -33,3 +33,4 @@ dist
 .rvmrc*
 lib/tasks/*_test*.rake
 washos_rails_ubuntu.sh
+.env.test
