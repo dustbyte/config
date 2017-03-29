@@ -31,6 +31,8 @@ __pycache__
 .eggs
 dist
 .rvmrc*
-lib/tasks/*_test*.rake
+lib/tasks/*test*.rake
 washos_rails_ubuntu.sh
 .env.test
+.ignore
+.agignore

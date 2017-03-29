@@ -26,7 +26,7 @@ bindsym $mod+p exec mpc toggle
 # Shortcuts
 bindsym $mod+a exec dmenu_run -nb "#252525" -nf "#e3e3e3" -sb "#1e5e8a"
 #bind	$mod+36 exec xterm -fa 'Monospace' -fs 11 -ls
-bind	$mod+36 exec xterm
+bind	$mod+36 exec ~/bin/launch_term.sh
 bind	$mod+47 exec i3lock
 bindsym $mod+u exec (setxkbmap us_qwerty-fr && xmodmap ~/.Xmodmap)
 bindsym $mod+i exec setxkbmap fr
@@ -69,8 +69,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bind $mod+Shift+35 move workspace to output HDMI1
-bind $mod+Shift+34 move workspace to output HDMI2
+bind $mod+Shift+35 move workspace to output HDMI2
+bind $mod+Shift+34 move workspace to output HDMI1
 bind $mod+Shift+36 move workspace to output eDP1
 
 # enter fullscreen mode for the focused container

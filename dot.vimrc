@@ -106,6 +106,7 @@ nmap <Leader>p <ESC>"+p
 noremap <LocalLeader>o :call DownOneLine()<cr>
 map <Leader>ld "_d
 map <Leader>lp "_dP
+map <Leader>t :NERDTreeToggle<cr>
 
 nmap <Leader>nh :nohlsearch<cr>
 
@@ -218,7 +219,6 @@ if has('autocmd')
 
 endif
 
-
 "
 " Functions
 "
@@ -243,6 +243,7 @@ endfun
 
 let g:jedi#popup_select_first=0
 let g:closetag_filenames = "*.html"
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 let g:NERDCustomDelimiters = {
     \ 'dnsmasq': { 'left': '#' }

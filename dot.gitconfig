@@ -9,6 +9,7 @@
     topush = log --branches="*" --oneline --not --remotes
     lg = log --graph --oneline --decorate=short
     please = push --force-with-lease
+    superpull = !git fetch -p && git pull
 [core]
     excludesfile = ~/.gitignore_global
 
