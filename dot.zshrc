@@ -334,7 +334,7 @@ ssh_agent_start()
 # Vars
 #
 
-export PATH=~/bin:$PATH:/usr/bin:/usr/sbin:/usr/local/bin:usr/bin/X11:~/.cask/bin
+export PATH=~/bin:~/.cask/bin:$PATH:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 export PAGER='less -isr'
 export LESS=-RX
 export MANPAGER='/usr/bin/less -isr'
