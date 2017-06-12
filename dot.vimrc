@@ -56,6 +56,7 @@ set history=300                         " remember the last 300 commands
 set showcmd
 
 set ignorecase
+set smartcase
 set hlsearch                            " enable search highlight globally
 set incsearch                           " show matches as soon as possible
 set showmatch                           " show matching brackets when typing
@@ -73,7 +74,7 @@ set mousehide                           " hide the mouse when typing text
 
 set diffopt=filler,iwhite               " ignore all whitespace and sync
 
-set completeopt=menuone,longest,preview
+set completeopt=menuone,longest
 set backspace=eol,start,indent          " allow backspacing over indent, eol, & start
 set undolevels=1000                     " number of forgivable mistakes
 set updatecount=100                     " write swap file to disk every 100 chars
@@ -106,15 +107,16 @@ nmap <Leader>p <ESC>"+p
 noremap <LocalLeader>o :call DownOneLine()<cr>
 map <Leader>ld "_d
 map <Leader>lp "_dP
+
 map <Leader>t :NERDTreeToggle<cr>
+map <Leader>l :NERDTreeFind<cr>
 
 nmap <Leader>nh :nohlsearch<cr>
 
-inoremap <Tab> <tab>
-vnoremap <Tab> =
+"inoremap <Tab> <tab>
+"vnoremap <Tab> =
 
 map <MouseMiddle> <ESC>"*p
-
 
 ""
 "" Tab Control
@@ -208,6 +210,7 @@ if has('autocmd')
     au FileType go nmap <leader>gr <Plug>(go-run)
     au FileType go nmap <leader>gb <Plug>(go-build)
     au FileType go nmap <leader>gt <Plug>(go-test)
+    au FileType go nmap <leader>gf <Plug>(go-test-func)
     au FileType go nmap <leader>gc <Plug>(go-coverage)
     au FileType go nmap <Leader>gd <Plug>(go-def-vertical)
     au FileType go nmap <Leader>gD <Plug>(go-doc-vertical)
@@ -216,7 +219,6 @@ if has('autocmd')
     au FileType go nmap <Leader>gR <Plug>(go-rename)
 
     let g:go_fmt_command = "goimports"
-
 endif
 
 "
@@ -246,5 +248,5 @@ let g:closetag_filenames = "*.html"
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 let g:NERDCustomDelimiters = {
-    \ 'dnsmasq': { 'left': '#' }
-\}
+            \ 'dnsmasq': { 'left': '#' }
+            \}
