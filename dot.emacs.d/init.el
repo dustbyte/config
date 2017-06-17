@@ -2,12 +2,12 @@
   `(when (require ,mode nil 'noerror)
      ,@body
      )
-)
+  )
 
 (defmacro add-multiple-hooks (hooks function)
   `(mapc (lambda (hook)
-          (add-hook hook ,function))
-          ,hooks)
+           (add-hook hook ,function))
+         ,hooks)
   )
 
 (defun smart-open-line-above()
@@ -16,7 +16,7 @@
   (newline-and-indent)
   (forward-line -1)
   (indent-line-according-to-mode)
-)
+  )
 
 (defun magit-status-solo (&optional dir)
   "Helper function allowing to call magit-status directly from command-line"
@@ -26,7 +26,7 @@
     )
   (magit-status dir)
   (delete-other-windows)
-)
+  )
 
 (setq flycheck-hooks ())
 
@@ -65,7 +65,7 @@
  '(mouse-wheel-scroll-amount '(1 ((shift) . 1)))
  '(electric-indent-mode t)
  '(visible-cursor nil)
-)
+ )
 
 ;; Misc options
 (prefer-coding-system 'utf-8)
@@ -82,41 +82,41 @@
 
 ;; Package setup
 (on-require 'package
-    (when (file-exists-p "~/.cask/cask.el")
-      (require 'cask "~/.cask/cask.el")
-      (cask-initialize)
-      )
+            (when (file-exists-p "~/.cask/cask.el")
+              (require 'cask "~/.cask/cask.el")
+              (cask-initialize)
+              )
 
-    ;; Themes
-    (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-    (load-theme 'wwombat t)
+            ;; Themes
+            (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+            (load-theme 'wwombat t)
 
-    ;; autocomplete
-    (on-require 'auto-complete
-                (global-auto-complete-mode t)
-                )
+            ;; autocomplete
+            (on-require 'auto-complete
+                        (global-auto-complete-mode t)
+                        )
 
-    ;; Yasnippet
-    (on-require 'yasnippet
-                (yas-global-mode t)
-                (setq yas/root-directory "~/.emacs.d/snippets")
-                )
+            ;; Yasnippet
+            (on-require 'yasnippet
+                        (yas-global-mode t)
+                        (setq yas/root-directory "~/.emacs.d/snippets")
+                        )
 
-    (setq global-hl-line-mode t)
+            (setq global-hl-line-mode t)
 
-    (custom-set-faces
-     '(flycheck-error ((t (:underline t))))
-     '(flycheck-warning ((t (:underline t))))
-     '(flycheck-info ((t (:underline t))))
-     )
-    (setq
-     flycheck-highlighting-mode 'lines
-     flycheck-display-errors-delay 0.5
-     )
-    (global-set-key (kbd "M-n") 'flycheck-next-error)
-    (global-set-key (kbd "M-p") 'flycheck-previous-error)
+            (custom-set-faces
+             '(flycheck-error ((t (:underline t))))
+             '(flycheck-warning ((t (:underline t))))
+             '(flycheck-info ((t (:underline t))))
+             )
+            (setq
+             flycheck-highlighting-mode 'lines
+             flycheck-display-errors-delay 0.5
+             )
+            (global-set-key (kbd "M-n") 'flycheck-next-error)
+            (global-set-key (kbd "M-p") 'flycheck-previous-error)
 
-    )
+            )
 
 ;; Mouse
 (on-require 'mouse
@@ -158,6 +158,18 @@
 (global-set-key (kbd "C-x p") 'pwd)
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (let ((current-prefix-arg -4)) (call-interactively 'indent-rigidly))))
 
+(global-set-key (kbd "C-M-f") (lambda ()
+                                (interactive)
+                                (save-excursion
+                                  (beginning-of-buffer)
+                                  (set-mark-command nil)
+                                  (end-of-buffer)
+                                  (indent-for-tab-command)
+                                  (setq deactivate-mark nil)
+                                  )
+                                (recenter)
+                                )
+                )
 
 ;; Saveplace file
 (setq save-place-file "~/.saveinfo")
