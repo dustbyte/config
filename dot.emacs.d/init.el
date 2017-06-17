@@ -158,6 +158,7 @@
 (global-set-key (kbd "C-x p") 'pwd)
 (global-set-key (kbd "<backtab>") (lambda () (interactive) (let ((current-prefix-arg -4)) (call-interactively 'indent-rigidly))))
 
+(global-set-key (kbd "C-M-w") 'delete-window)
 (global-set-key (kbd "C-M-f") (lambda ()
                                 (interactive)
                                 (save-excursion
