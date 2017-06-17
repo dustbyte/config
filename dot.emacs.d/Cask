@@ -24,3 +24,4 @@
 (depends-on "alchemist")
 (depends-on "inf-mongo")
 (depends-on "cider")
+(depends-on "paredit")
