@@ -1,0 +1,35 @@
+#!/bin/bash
+
+file_path=/sys/class/backlight/intel_backlight
+
+value=$(cat $file_path/brightness)
+max_brightness=$(cat $file_path/max_brightness)
+
+
+[ $# -eq 0  ] && echo "scale=2; $value / $max_brightness * 100" | bc | sed 's/\..*//g' && exit
+
+val=$(echo $1 | grep -Eo '[0-9]+')
+first=${1:0:1}
+
+if [ $first = '+' ]
+then
+    new=$(echo "scale=2;(($value/$max_brightness) + ($val / 100.0)) * $max_brightness" | bc | sed 's/\..*//g')
+else
+    if [ $first = '-' ]
+    then
+        new=$(echo "scale=2;(($value/$max_brightness) - ($val / 100.0)) * $max_brightness" | bc | sed 's/\..*//g')
+    else
+        new=$(echo "scale=2;$val/100 * $max_brightness" | bc | sed 's/\..*//g')
+    fi
+fi
+
+if [ $new -gt $max_brightness ]
+then
+    new=$max_brightness
+fi
+if [ $new -lt 1 ]
+then
+    new=1
+fi
+
+echo $new | sudo tee $file_path/brightness > /dev/null

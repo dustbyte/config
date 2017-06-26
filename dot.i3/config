@@ -15,8 +15,8 @@ bind	$mod+21 exec amixer -D pulse sset Master 2%+
 bind	$mod+20 exec amixer -D pulse sset Master 2%-
 
 # Screen brightness
-bind	$mod+67 exec xbacklight -10
-bind	$mod+68 exec xbacklight +10
+bind	$mod+67 exec ~/bin/backlight -10
+bind	$mod+68 exec ~/bin/backlight +10
 
 
 bind	123 exec amixer -c 1 sset PCM 1%+
@@ -69,9 +69,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bind $mod+Shift+35 move workspace to output HDMI2
-bind $mod+Shift+34 move workspace to output HDMI1
-bind $mod+Shift+36 move workspace to output eDP1
+bind $mod+Shift+35 move workspace to output HDMI-2
+bind $mod+Shift+34 move workspace to output HDMI-1
+bind $mod+Shift+36 move workspace to output eDP-1
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
