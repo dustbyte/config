@@ -264,22 +264,15 @@ venv_py()
 
 go_setup()
 {
-    local GOROOT_DIRECTORY=${HOME}/bin/go
-
-    if [ -d ${GOROOT_DIRECTORY} ]
+    if [ -e /usr/local/go ]
     then
-        export GOROOT=${GOROOT_DIRECTORY}
-        export PATH=${PATH}:${GOROOT}/bin
-    fi
-
-    local GOPATH_DIRECTORY="${HOME}/work/go"
-
-    if [ -d ${GOPATH_DIRECTORY}  ]
-    then
-        export GOPATH="$GOPATH_DIRECTORY"
-        export PATH=${PATH}:${GOPATH}/bin
+        export PATH=${PATH}:/usr/local/go/bin
+        export GOPATH=$(go env GOPATH)
+        export GOBIN=${GOPATH}/bin
+        export PATH=${PATH}:${GOBIN}
     fi
 }
+
 
 spot()
 {
@@ -441,4 +434,8 @@ LP_ENABLE_TEMP=0
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
+fi
+
+if [ -f $HOME/.zprofile ]; then
+    . $HOME/.zprofile
 fi

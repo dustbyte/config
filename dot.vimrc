@@ -27,7 +27,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-scripts/closetag.vim'
-Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
