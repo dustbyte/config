@@ -27,6 +27,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-scripts/closetag.vim'
+Plugin 'samsaga2/vim-z80'
 
 call vundle#end()
 filetype plugin indent on
@@ -249,3 +250,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:NERDCustomDelimiters = {
             \ 'dnsmasq': { 'left': '#' }
             \}
+
+let $VIMRC_LOCAL = $HOME.'/.vimrc_local'
+if filereadable($VIMRC_LOCAL)
+    source $VIMRC_LOCAL
+endif
