@@ -69,11 +69,6 @@ check_command()
     which $1 >& /dev/null
 }
 
-vman()
-{
-    man $1 | col -b | vim -c "set ft=man" -R -
-}
-
 tmpwrite()
 {
   chmod u+w "$1"
@@ -231,25 +226,10 @@ darwin()
         alias ls='ls -CFG'
         alias clear_cache='sudo rm /var/log/asl/*.asl'
         check_command mvim && alias vim='mvim -v'
-        [ -e "/Applications/Sublime Text 2.app" ] && alias sublime_text='open -a "/Applications/Sublime Text 2.app"'
 
-        #Macports
-        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/Python.framework/Versions/3.2/bin:/usr/local/git/bin:/usr/local/sbin
+        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH:/usr/local/git/bin:/usr/local/sbin
         export MANPATH=/opt/local/share/man:$MANPATH
         export DISPLAY=:0.0
-
-
-        # Fixes fore Postgres.app
-        export PATH="$HOME/bin:/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-
-        _psql()
-        {
-            SAVE=$DYLD_FALLBACK_LIBRARY_PATH
-            unset DYLD_FALLBACK_LIBRARY_PATH
-            psql "$*"
-            export DYLD_FALLBACK_LIBRARY_PATH=$SAVE
-        }
-        alias psql=_psql
     fi
 }
 
@@ -376,8 +356,6 @@ alias ec='emacs_client -nw'
 alias eg='emacs_client&disown'
 alias rld='source $HOME/.zshrc'
 alias cpyc='find . -name "*.pyc" -print -exec rm -rf {} \;'
-alias vman=vman
-alias tmpwrite=tmpwrite
 alias vimpager='vim -R -'
 alias miamstylo=spot
 alias qui="~/bin/qui.py"
