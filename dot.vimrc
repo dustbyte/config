@@ -28,6 +28,9 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-endwise'
 Plugin 'vim-scripts/closetag.vim'
 Plugin 'samsaga2/vim-z80'
+Plugin 'hashivim/vim-terraform'
+Plugin 'godlygeek/tabular'
+Plugin 'alfredodeza/pytest.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -112,6 +115,7 @@ map <Leader>t :NERDTreeToggle<cr>
 map <Leader>l :NERDTreeFind<cr>
 
 nmap <Leader>nh :nohlsearch<cr>
+map <Leader><Tab> :Tab /=<cr>
 
 "inoremap <Tab> <tab>
 "vnoremap <Tab> =
@@ -202,6 +206,15 @@ if has('autocmd')
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
 
     "
+    " Python
+    "
+
+    au FileType python nmap <Leader>1 :Pytest function<cr>
+    au FileType python nmap <Leader>2 :Pytest file<cr>
+    au FileType python nmap <Leader>3 :Pytest method<cr>
+    au FileType python nmap <Leader>4 :Pytest class<cr>
+
+    "
     " Go
     "
 
@@ -251,7 +264,7 @@ let g:NERDCustomDelimiters = {
             \ 'dnsmasq': { 'left': '#' }
             \}
 
-let $VIMRC_LOCAL = $HOME.'/.vimrc_local'
-if filereadable($VIMRC_LOCAL)
-    source $VIMRC_LOCAL
+let local_file=$HOME.'/.vimrc_local'
+if filereadable(local_file)
+    :execute 'source '.local_file
 endif
