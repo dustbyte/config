@@ -13,7 +13,6 @@ Vagrantfile
 .vagrant
 settings.ini
 .idea
-Dockerfile
 *.sqlite3
 .cask
 ac-comphist.dat
@@ -36,3 +35,7 @@ washos_rails_ubuntu.sh
 .env.test
 .ignore
 .agignore
+replace.sh
+.pytest_cache
+TODO
+ecs-ci
