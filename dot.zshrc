@@ -58,6 +58,7 @@ c_reset="%{$reset_color%}"
 c_good="%{$fg[green]%}"
 c_dirty="%{$fg[yellow]%}"
 c_bad="%{$fg[red]%}"
+c_blue="%{$fg[blue]%}"
 
 #
 # functions
@@ -125,7 +126,7 @@ prompt()
 
     if [ -n "$SSH_CLIENT" ]
     then
-        HOST_INFO='@%m'
+        HOST_INFO="@${c_blue}%m${c_reset}"
     fi
 
     PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
