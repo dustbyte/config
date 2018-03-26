@@ -90,7 +90,7 @@ git_prompt()
         branch=`git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g'`
         if [ "$branch" != "" ]
         then
-            sts=`git status -s`
+            sts=$(git status -s)
             if [ "$sts" = "" ]
             then
                 color="$c_good"
@@ -101,40 +101,17 @@ git_prompt()
                 color="$c_dirty"
             fi
 
-            ahead=`git log --branches="*$branch" --oneline --not --remotes 2>/dev/null | wc -l | cut -d ' ' -f 8`
+            ahead=$(git log --branches="*$branch" --oneline --not --remotes 2>/dev/null | wc -l | cut -d ' ' -f 8)
 
-            echo -n "$color"
-            echo -n "$branch"
-            echo -n "$c_reset"
-            [ "$ahead" -ne 0 ] && echo -n " ($ahead)"
-            echo -n "|"
+            print_ahead=""
+            if [ "${ahead}" -gt 0 ]
+            then
+                print_ahead="(${ahead})"
+            fi
+
+            echo -n "[${color}${branch}${c_reset}${print_ahead}] "
         fi
     fi
-}
-
-svn_prompt()
-{
-    if $(check_command svn && svn info >& /dev/null)
-    then
-        st=`svn status`
-        if `echo "$st" | grep -v '?' >& /dev/null`
-        then
-            echo -n "$c_bad"
-        elif [ "$st" != "" ]
-        then
-            echo -n "$c_dirty"
-        else
-            echo -n "$c_good"
-        fi
-        echo -n svn
-        echo -n "$c_reset|"
-    fi
-}
-
-scm_prompt()
-{
-    git_prompt
-    svn_prompt
 }
 
 prompt()
@@ -146,7 +123,12 @@ prompt()
         P_USER="$c_good"
     fi
 
-    PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset@%m> '
+    if [ -n "$SSH_CLIENT" ]
+    then
+        HOST_INFO='@%m'
+    fi
+
+    PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
     RPROMPT=''
 }
 
@@ -403,12 +385,6 @@ darwin
 prompt
 venv_py
 go_setup
-
-LP_MARK_DEFAULT="$"
-LP_ENABLE_BATT=0
-LP_ENABLE_LOAD=0
-LP_ENABLE_TEMP=0
-[[ $- = *i*  ]] && . ${HOME}/.zsh/liquidprompt/liquidprompt
 
 if [ -f $HOME/.zshrc_local ]; then
     . $HOME/.zshrc_local
