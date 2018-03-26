@@ -128,7 +128,7 @@ prompt()
         HOST_INFO='@%m'
     fi
 
-    PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
+    PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
     RPROMPT=''
 }
 
