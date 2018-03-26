@@ -70,20 +70,6 @@ check_command()
     which $1 >& /dev/null
 }
 
-tmpwrite()
-{
-  chmod u+w "$1"
-  vim "$1"
-  chmod u-w "$1"
-}
-
-magit()
-{
-    dir='.'
-    [ $# -gt 0 ] && dir="$1"
-    emacs -nw --eval "(magit-status-solo \"$dir\")"
-}
-
 git_prompt()
 {
     if check_command git
@@ -115,6 +101,14 @@ git_prompt()
     fi
 }
 
+aws_profile_prompt()
+{
+    if [ -n "${AWS_PROFILE}" ]
+    then
+        echo "(${c_blue}${AWS_PROFILE}${c_reset}) "
+    fi
+}
+
 prompt()
 {
     if [ `whoami` = 'root'  ]
@@ -129,7 +123,7 @@ prompt()
         HOST_INFO="@${c_blue}%m${c_reset}"
     fi
 
-    PROMPT='(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
+    PROMPT='$(aws_profile_prompt)(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
     RPROMPT=''
 }
 
@@ -174,32 +168,6 @@ openbsd()
     fi
 }
 
-netbsd()
-{
-
-    if [ "$OSNAME" = "NetBSD" ]
-    then
-        FTP_SITE="ftp://ftp.fr.netbsd.org"
-        export PKG_PATH="$FTP_SITE/pub/pkgsrc/packages/NetBSD/`uname -m`/6.0/All"
-        export PACKAGE_PATH=$PKG_PATH
-
-        if check_command gls
-        then
-            alias ls='gls --color=auto'
-        else
-            alias ls='ls'
-        fi
-
-        if check_command ggrep
-        then
-            alias grep='ggrep --color=auto'
-        else
-            unalias grep
-            SPOT_ARGS=""
-        fi
-    fi
-}
-
 darwin()
 {
     if [ "$OSNAME" = "Darwin" ]
@@ -236,7 +204,6 @@ go_setup()
     fi
 }
 
-
 spot()
 {
     pattern=""
@@ -269,21 +236,6 @@ spot()
     done
 
     ${GREP_COMMAND:=grep} "${SPOT_ARGS}" "$opts" "$pattern" $spath
-}
-
-ssh_agent_start()
-{
-    local pid=$(pgrep ssh-agent)
-    local ssh_agent_file=${HOME}/.ssh_agent.sh
-
-    if [ "$pid" = "" ]
-    then
-        [ -f "${ssh_agent_file}" ] && rm -f "${ssh_agent_file}"
-        ssh-agent -s | grep -v echo > "${ssh_agent_file}"
-    fi
-
-    [ -f "${ssh_agent_file}" ] && source "${ssh_agent_file}"
-    ssh-add 2> /dev/null
 }
 
 #
@@ -349,23 +301,6 @@ alias ri="echo card"
 check_command gvim && alias vim='gvim -v'
 
 #
-# docker
-#
-
-docker_rmi_repository() {
-    [ -z $1 ] && echo "Please provide a repository name" && exit 1
-    docker rmi -f $(docker images | awk "/$1/ {print \$3}")
-}
-
-alias dkillall='docker kill $(docker ps -qa)'
-alias drmall='docker rm -f $(docker ps -qa)'
-alias dflush='docker rm -f $(docker ps -a | awk "/Exited/ {print \$1}") 2>/dev/null'
-alias dflushi='docker rmi -f $(docker images | awk "/<none>/ {print \$3}") 2>/dev/null'
-alias dclean='echo "removed containers:" && dflush ; echo "\nremoved images:" && dflushi'
-alias cddocker='cd ${HOME}/work/go/src/github.com/docker/'
-alias drmi=docker_rmi_repository
-
-#
 # Set config
 #
 
@@ -380,7 +315,6 @@ bindkey "^[Oc" forward-word
 #
 
 openbsd
-netbsd
 freebsd
 darwin
 prompt
