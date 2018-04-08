@@ -45,7 +45,7 @@ let maplocalleader="\<Space>"
 set nocompatible                        " vim defaults, not vi!
 set hidden                              " allow editing multiple unsaved buffers
 set more                                " the 'more' prompt
-set cursorline
+"set cursorline
 set autoread                            " watch for file changes by other programs
 set visualbell t_vb=
 set autochdir
