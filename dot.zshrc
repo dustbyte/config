@@ -96,7 +96,7 @@ git_prompt()
                 print_ahead="(${ahead})"
             fi
 
-            echo -n "[${color}${branch}${c_reset}${print_ahead}] "
+            echo -n " [${color}${branch}${c_reset}${print_ahead}]"
         fi
     fi
 }
@@ -123,7 +123,7 @@ prompt()
         HOST_INFO="@${c_blue}%m${c_reset}"
     fi
 
-    PROMPT='$(aws_profile_prompt)(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)> $(git_prompt)'
+    PROMPT='$(aws_profile_prompt)(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)$(git_prompt)> '
     RPROMPT=''
 }
 
