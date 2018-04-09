@@ -1,0 +1,13 @@
+#!/bin/sh
+
+
+[ "$#" -eq 0 ] && echo "usage: $0 key_env" && exit 1
+
+private_file="${HOME}/.ssh/id_${1}"
+public_file="${private_file}.pub"
+
+[ ! -f "${private_file}" ] && echo "file ${private_file} does not exist" && exit 1
+[ ! -f "${public_file}" ] && echo "file ${public_file} does not exist" && exit 1
+
+ln -sf "${private_file}" ~/.ssh/id_rsa
+ln -sf "${public_file}" ~/.ssh/id_rsa.pub
