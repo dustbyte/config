@@ -191,7 +191,7 @@ venv_py()
 
 go_setup()
 {
-    if [ -e /usr/local/go ]
+    if check_command go
     then
         export PATH=${PATH}:/usr/local/go/bin
         export GOPATH=$(go env GOPATH)
