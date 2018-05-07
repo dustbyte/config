@@ -59,6 +59,7 @@ c_good="%{$fg[green]%}"
 c_dirty="%{$fg[yellow]%}"
 c_bad="%{$fg[red]%}"
 c_blue="%{$fg[blue]%}"
+c_red="%{$fg[red]%}"
 
 #
 # functions
@@ -101,11 +102,44 @@ git_prompt()
     fi
 }
 
+aws-profile() {
+    if [[ $# -gt 0  ]]; then
+        profile_name=$1
+
+        if [ ${profile_name} = '-d' ]; then
+            profile_name=''
+        fi
+
+        export AWS_PROFILE=${profile_name}
+    else
+        reset="\e[39m"
+        blue="\e[34m"
+        red="\e[31m"
+
+        for profile in $(grep -E '\[.*\]' ~/.aws/credentials | grep -Eo '[0-9a-zA-Z_-]+'); do
+            color=''
+            if [[ $AWS_PROFILE = $profile ]]; then
+                if [ $profile != 'prod'  ]; then
+                    color="$blue"
+                else
+                    color="$red"
+                fi
+            fi
+
+            echo "${color}${profile}${reset}"
+        done
+    fi
+}
+
 aws_profile_prompt()
 {
     if [ -n "${AWS_PROFILE}" ]
     then
-        echo "(${c_blue}${AWS_PROFILE}${c_reset}) "
+        profile_color=$c_blue
+        if [ "${AWS_PROFILE}" = 'prod' ]; then
+            profile_color=$c_red
+        fi
+        echo "(${profile_color}${AWS_PROFILE}${c_reset}) "
     fi
 }
 
@@ -286,13 +320,9 @@ alias es='emacs_server'
 alias ec='emacs_client -nw'
 alias eg='emacs_client&disown'
 alias rld='source $HOME/.zshrc'
-alias cpyc='find . -name "*.pyc" -print -exec rm -rf {} \;'
-alias vimpager='vim -R -'
 alias miamstylo=spot
-alias qui="~/bin/qui.py"
-alias school='ssh wacren_p@ssh.epitech.net'
 alias bpython='bpython -q'
-alias ri="echo card"
+alias ag='ag --no-group'
 
 check_command gvim && alias vim='gvim -v'
 

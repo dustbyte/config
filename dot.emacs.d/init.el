@@ -182,7 +182,7 @@
 (require 'config-c)
 (require 'config-d)
 (require 'config-wm)
-(require 'config-web)
+;; (require 'config-web)
 (require 'config-mongo)
 (require 'saveplace)
 

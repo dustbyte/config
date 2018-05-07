@@ -39,3 +39,4 @@ replace.sh
 .pytest_cache
 TODO
 ecs-ci
+paperboy/

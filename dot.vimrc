@@ -31,6 +31,7 @@ Plugin 'samsaga2/vim-z80'
 Plugin 'hashivim/vim-terraform'
 Plugin 'godlygeek/tabular'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,7 +46,7 @@ let maplocalleader="\<Space>"
 set nocompatible                        " vim defaults, not vi!
 set hidden                              " allow editing multiple unsaved buffers
 set more                                " the 'more' prompt
-"set cursorline
+
 set autoread                            " watch for file changes by other programs
 set visualbell t_vb=
 set autochdir
@@ -140,7 +141,6 @@ nmap <C-h> <ESC>:tabprev<CR>
 map <C-t> :tabnew<CR>
 map <C-d> :q<CR>
 
-
 "
 " Visual environment settings
 "
@@ -204,6 +204,7 @@ if has('autocmd')
     autocmd FileType python setlocal expandtab tabstop=4 softtabstop=4
     autocmd FileType python setlocal completeopt-=preview
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+    autocmd FileType sh setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
     "
     " Python
