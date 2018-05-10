@@ -208,7 +208,7 @@ darwin()
         alias clear_cache='sudo rm /var/log/asl/*.asl'
         check_command mvim && alias vim='mvim -v'
 
-        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH:/usr/local/git/bin:/usr/local/sbin
+        export PATH=$PATH:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:/usr/local/sbin
         export MANPATH=/opt/local/share/man:$MANPATH
         export DISPLAY=:0.0
     fi
