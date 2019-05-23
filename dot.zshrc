@@ -311,6 +311,12 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1
 
 #
+# git setup
+#
+
+export GIT_SSH="${HOME}"/bin/ssh-git.sh
+
+#
 # aliases
 #
 
