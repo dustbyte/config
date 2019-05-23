@@ -163,7 +163,14 @@ prompt()
 
 pkg_search()
 {
-    echo "ls $1*" | ftp -ap "$PACKAGE_PATH/"
+    one_day=86400
+    package_index="${HOME}/.package_index"
+
+    if [ ! -f "${package_index}" ] || [ $(echo "$(date +%s) - $(stat -f "%m" ${package_index})" | bc) -gt "${one_day}" ]; then
+        curl -s $PKG_PATH/index.txt > $package_index
+    fi
+
+    grep "${1}" $package_index
 }
 
 freebsd()
@@ -302,6 +309,12 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1
+
+#
+# git setup
+#
+
+export GIT_SSH="${HOME}"/bin/ssh-git.sh
 
 #
 # aliases
