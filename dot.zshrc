@@ -215,7 +215,7 @@ darwin()
         alias clear_cache='sudo rm /var/log/asl/*.asl'
         check_command mvim && alias vim='mvim -v'
 
-        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH:/usr/local/git/bin:/usr/local/sbin
+        export PATH=$PATH:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/usr/local/git/bin:/usr/local/sbin
         export MANPATH=/opt/local/share/man:$MANPATH
         export DISPLAY=:0.0
     fi
@@ -309,6 +309,12 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export GROFF_NO_SGR=1
+
+#
+# git setup
+#
+
+export GIT_SSH="${HOME}"/bin/ssh-git.sh
 
 #
 # aliases
