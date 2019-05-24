@@ -32,6 +32,8 @@ Plugin 'hashivim/vim-terraform'
 Plugin 'godlygeek/tabular'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'rhysd/vim-crystal'
+Plugin 'keith/swift.vim'
 
 call vundle#end()
 filetype plugin indent on

@@ -18,7 +18,6 @@ bind	$mod+20 exec amixer -D pulse sset Master 2%-
 bind	$mod+67 exec ~/bin/backlight -10
 bind	$mod+68 exec ~/bin/backlight +10
 
-
 bind	123 exec amixer -c 1 sset PCM 1%+
 bind	122 exec amixer -c 1 sset PCM 1%-
 bindsym $mod+p exec mpc toggle
@@ -41,11 +40,13 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+q focus down
+bindsym $mod+Tab focus right
 
-bindsym $mod+q exec i3-cycle down
-bindsym $mod+Tab exec i3-cycle right
+#bindsym $mod+q exec i3-msg focus down
+#bindsym $mod+Tab exec i3-msg focus right
 
-bind $mod+49 exec i3-cycle next
+#bind $mod+49 exec i3-cycle next
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -148,3 +149,9 @@ bar {
     status_command i3status --config ~/.i3/i3status.conf
     tray_output none
 }
+
+exec --no-startup-id xinput set-prop 10 282 1
+exec --no-startup-id xinput set-prop 10 290 1
+exec --no-startup-id setxkbmap -option caps:escape
+exec --no-startup-id xmodmap -e 'keycode 112 = Left'
+exec --no-startup-id xmodmap -e 'keycode 117 = Right'
