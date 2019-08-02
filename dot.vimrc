@@ -91,7 +91,7 @@ set autoindent smartindent cindent      " turn on auto/smart indenting
 set expandtab                           " use spaces, not tabs
 set smarttab                            " make <tab> and <backspace> smarter
 set shiftwidth=4                        " indents of 4
-set cino=>4{2u0(0N-st0g0
+set cino=>4{2u0(0,W4,m1N-st0g0
 
 
 "
