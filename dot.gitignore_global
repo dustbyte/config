@@ -40,3 +40,5 @@ replace.sh
 TODO
 ecs-ci
 paperboy/
+.vscode
+.coverage
