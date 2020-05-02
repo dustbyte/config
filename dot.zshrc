@@ -143,6 +143,13 @@ aws_profile_prompt()
     fi
 }
 
+kubernetes_context_prompt() {
+    if check_command kubectl
+    then
+        echo -n "[$(kubectl config current-context)]"
+    fi
+}
+
 prompt()
 {
     if [ `whoami` = 'root'  ]
@@ -157,7 +164,7 @@ prompt()
         HOST_INFO="@${c_blue}%m${c_reset}"
     fi
 
-    PROMPT='$(aws_profile_prompt)(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)$(git_prompt)> '
+    PROMPT='$(kubernetes_context_prompt)$(aws_profile_prompt)(%j|%B%?%b)${P_USER}%n$c_reset${HOST_INFO}:%(5~|%-1~/…/%3~|%4~)$(git_prompt)> '
     RPROMPT=''
 }
 
@@ -336,6 +343,8 @@ alias rld='source $HOME/.zshrc'
 alias miamstylo=spot
 alias bpython='bpython -q'
 alias ag='ag --no-group'
+alias vyaml='vim -Rc "set ft=yaml" -'
+alias vson='vim -Rc "set ft=json" -'
 
 check_command gvim && alias vim='gvim -v'
 
