@@ -146,7 +146,11 @@ aws_profile_prompt()
 kubernetes_context_prompt() {
     if check_command kubectl
     then
-        echo -n "[$(kubectl config current-context)]"
+        current_context=$(kubectl config current-context 2>/dev/null)
+
+        if [ -n "$current_context" ]; then
+            echo -n $current_context
+        fi
     fi
 }
 
