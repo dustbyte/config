@@ -172,18 +172,6 @@ prompt()
     RPROMPT=''
 }
 
-pkg_search()
-{
-    one_day=86400
-    package_index="${HOME}/.package_index"
-
-    if [ ! -f "${package_index}" ] || [ $(echo "$(date +%s) - $(stat -f "%m" ${package_index})" | bc) -gt "${one_day}" ]; then
-        curl -s $PKG_PATH/index.txt > $package_index
-    fi
-
-    grep "${1}" $package_index
-}
-
 freebsd()
 {
     if [ "$OSNAME" = "FreeBSD" ]
@@ -197,6 +185,7 @@ openbsd()
 
     if [ "$OSNAME" = "OpenBSD" ]
     then
+        alias pkg_search='pkg_info -Q'
         if check_command colorls
         then
             alias ls='colorls -G'
