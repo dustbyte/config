@@ -232,13 +232,9 @@ darwin()
     fi
 }
 
-venv_py()
+activate_venv()
 {
-    if check_command virtualenvwrapper.sh
-    then
-        export WORKON_HOME="$HOME/.envs"
-        source `which virtualenvwrapper.sh`
-    fi
+    source ~/.zsh/venv_wrapper.sh
 }
 
 go_setup()
@@ -370,7 +366,7 @@ openbsd
 freebsd
 darwin
 prompt
-venv_py
+activate_venv
 go_setup
 
 if [ -f $HOME/.zshrc_local ]; then

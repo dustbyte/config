@@ -194,12 +194,15 @@ if has('autocmd')
                 \ endif
 
     au BufRead,BufNewFile *.go set filetype=go
+    au BufRead,BufNewFile *.zig set filetype=zig
+    au BufRead,BufNewFile *.zir set filetype=zir
     au BufRead,BufNewFile *.wsgi set filetype=python
     au BufRead,BufNewFile *xonshrc set filetype=python
     au BufRead,BufNewFile Capfile set filetype=ruby
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
     au BufRead,BufNewFile *.slim set filetype=slim
     au BufRead,BufNewFile nginx.conf* set filetype=conf
+    au BufRead,BufNewFile *.pcl set filetype=yaml
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -235,6 +238,13 @@ if has('autocmd')
     au FileType go nmap <Leader>gR <Plug>(go-rename)
 
     let g:go_fmt_command = "goimports"
+
+    "
+    " Rust
+    "
+    au FileType rust nmap <Leader>1 :RustTest<cr>
+    au FileType rust nmap <Leader>2 :RustTest!<cr>
+
 endif
 
 "
