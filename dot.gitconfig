@@ -23,3 +23,5 @@
 [user]
 	name = Pierre Wacrenier
 	email = pierre@wacrenier.me
+[pull]
+	rebase = true
