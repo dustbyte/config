@@ -3,6 +3,7 @@
 
 [alias]
     st = status -bs
+    sw = switch
     co = checkout
     ci = commit
     b = branch -avv

@@ -230,10 +230,10 @@ go_setup()
 {
     if check_command go
     then
-        export PATH=${PATH}:/usr/local/go/bin
+        export PATH=/usr/local/go/bin:${PATH}
         export GOPATH=$(go env GOPATH)
         export GOBIN=${GOPATH}/bin
-        export PATH=${PATH}:${GOBIN}
+        export PATH=${GOBIN}:${PATH}
     fi
 }
 
@@ -275,7 +275,7 @@ spot()
 # Vars
 #
 
-export PATH=~/bin:~/.cask/bin:$PATH:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
+export PATH=$HOME/.cargo/bin:~/bin:$HOME/.cask/bin:$PATH:/sbin:/usr/bin:/usr/sbin:/usr/local/bin
 export PAGER='less -isr'
 export LESS=-RX
 export MANPAGER='/usr/bin/less -isr'
