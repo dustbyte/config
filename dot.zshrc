@@ -228,7 +228,7 @@ activate_venv()
 
 go_setup()
 {
-    if check_command go
+    if [ -d /usr/local/go/bin ]
     then
         export PATH=/usr/local/go/bin:${PATH}
         export GOPATH=$(go env GOPATH)
@@ -269,6 +269,23 @@ spot()
     done
 
     ${GREP_COMMAND:=grep} "${SPOT_ARGS}" "$opts" "$pattern" $spath
+}
+
+savekeepass()
+{
+    if [ "${KEEPASS_BUCKET}" = "" ]; then
+        echo "Please provide variable KEEPASS_BUCKET" >& 2
+    else
+        aws s3 cp ~/.keepass/private.kdbx s3://${KEEPASS_BUCKET}/keepass/keepass.kdbx
+    fi
+}
+
+loadkeepass() {
+    if [ "${KEEPASS_BUCKET}" = "" ]; then
+        echo "Please provide variable KEEPASS_BUCKET" >& 2
+    else
+        aws s3 cp s3://${KEEPASS_BUCKET}/keepass/keepass.kdbx ~/.keepass/private.kdbx
+    fi
 }
 
 #
