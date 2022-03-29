@@ -89,7 +89,7 @@ git_prompt()
                 color="$c_dirty"
             fi
 
-            ahead=$(git log --branches="*$branch" --oneline --not --remotes 2>/dev/null | wc -l | cut -d ' ' -f 8)
+            ahead=$(git log --branches="*$branch" --oneline --not --remotes 2>/dev/null | wc -l | xargs)
 
             print_ahead=""
             if [ "${ahead}" -gt 0 ]

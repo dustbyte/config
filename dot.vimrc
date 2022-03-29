@@ -34,6 +34,9 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'rhysd/vim-crystal'
 Plugin 'keith/swift.vim'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'ollykel/v-vim'
+Plugin 'rodjek/vim-puppet'
 
 call vundle#end()
 filetype plugin indent on
@@ -44,6 +47,8 @@ filetype plugin indent on
 
 let mapleader="\<Space>"
 let maplocalleader="\<Space>"
+
+set noswapfile
 
 set nocompatible                        " vim defaults, not vi!
 set hidden                              " allow editing multiple unsaved buffers
@@ -128,6 +133,7 @@ map <MouseMiddle> <ESC>"*p
 ""
 "" Tab Control
 ""
+
 map <ESC>1 1gt
 map <ESC>2 2gt
 map <ESC>3 3gt
