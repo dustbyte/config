@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/Users/mota/roms/gb'
+let g:netrw_dirhist_2='/Users/mota/work/Gearboy/src/miniz'
+let g:netrw_dirhist_1='/Users/mota/work/gudboi/.github/workflows'
