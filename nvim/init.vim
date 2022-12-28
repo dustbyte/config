@@ -1,21 +1,7 @@
-"
-" Plugins
-"
-
-call plug#begin()
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'preservim/nerdcommenter'
-
-call plug#end()
-
 set nocompatible
 filetype off
 
-filetype plugin indent on
+source $HOME/.config/nvim/vim-plug/plugins.vim
 
 "
 " Settings
@@ -24,7 +10,6 @@ filetype plugin indent on
 let mapleader="\<Space>"
 let maplocalleader="\<Space>"
 
-set nocompatible                        " vim defaults, not vi!
 set hidden                              " allow editing multiple unsaved buffers
 set more                                " the 'more' prompt
 
@@ -52,7 +37,6 @@ set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)[%
 set number
 
 set wildmode=list,longest:full,full
-set wildmenu
 
 set mouse=a                             " mouse support in all modes
 set mousehide                           " hide the mouse when typing text
@@ -71,17 +55,17 @@ set expandtab                           " use spaces, not tabs
 set smarttab                            " make <tab> and <backspace> smarter
 set shiftwidth=4                        " indents of 4
 set cino=>4{2u0(0,W4,m1N-st0g0
-
+set foldlevel=0
 
 "
 " Bindings
 "
 
 nmap <Leader>ve :edit ~/.config/nvim/init.vim<cr>      " quickly edit this file
-nmap <Leader>vs :source ~/.config/nvim/init.vim<cr>    " quickly source this file
+nmap <Leader>vp :edit ~/.config/nvim/vim-plug/plugins.vim <cr>    " quickly source this file
+nmap <Leader>vc :edit ~/.config/nvim/coc_config.vim <cr>
+nmap <Leader>vs :source ~/.config/nvim/init.vim<cr>
 nmap <Leader>sp :set paste!<cr>         " toggle paste mode
-
-noremap <Leader>f :call IndentWholeFile()<cr>
 
 vmap <Leader>y "+y
 vmap <Leader>Y "*y
@@ -99,20 +83,12 @@ map <Leader>l :NERDTreeFind<cr>
 nmap <Leader>nh :nohlsearch<cr>
 map <Leader><Tab> :Tab /=<cr>
 
-nmap <Leader>ce :edit ~/.config/nvim/coc-settings.json<cr>
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gt <Plug>(coc-type-definition)
-nmap <Leader>gi <Plug>(coc-implementation)
-nmap <Leader>gr <Plug>(coc-references)
-
-"inoremap <Tab> <tab>
-"vnoremap <Tab> =
-
 map <MouseMiddle> <ESC>"*p
 
 ""
 "" Tab Control
 ""
+
 map <ESC>1 1gt
 map <ESC>2 2gt
 map <ESC>3 3gt
@@ -186,7 +162,7 @@ if has('autocmd')
     au BufRead,BufNewFile Vagrantfile set filetype=ruby
     au BufRead,BufNewFile *.slim set filetype=slim
     au BufRead,BufNewFile nginx.conf* set filetype=conf
-    au BufRead,BufNewFile *.pcl set filetype=yaml
+    au BufRead,BufNewFile *.pcl normal zR
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -253,10 +229,35 @@ fun! DownOneLine()
     :execute "normal! I\<cr>\<esc>k0D"
 endfun
 
-let g:jedi#popup_select_first=0
-let g:closetag_filenames = "*.html"
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let local_file='~/.config/nvim/nvim_local.vim'
+if filereadable(local_file)
+    :execute 'source '.local_file
+endif
 
-let g:NERDCustomDelimiters = {
-            \ 'dnsmasq': { 'left': '#' }
-            \}
+" Validate completion with enter instead of C-Y
+
+inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+
+" Coc
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+nmap <leader>cjd :call CocActionAsync('jumpDefinition')<cr>
+nmap <leader>cjr :call CocActionAsync('jumpReferences')<cr>
+
+au FileType go nmap <leader>ctt :CocCommand go.test.toggle<cr>
+
+lua <<EOF
+local hasConfigs, configs = pcall(require, "nvim-treesitter.configs")
+if hasConfigs then
+  configs.setup {
+    ensure_installed = "pcl",
+    highlight = {
+      enable = true,              -- false will disable the whole extension
+    },
+    indent = {
+      enable = true
+    }
+  }
+end
+EOF

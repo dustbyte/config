@@ -258,7 +258,7 @@ call <SID>X("Pmenu",		"f6f3e8",	"444444",	"")
 call <SID>X("PmenuSel",		"121212",	"caeb82",	"")
 call <SID>X("TabLine",		"f6f3e8",	"444444",	"none")
 call <SID>X("TabLineFill",	"444444",	"ff0000",	"")
-call <SID>X("TabLineSel",	"444444",       "f6f3e8",       "bold")
+call <SID>X("TabLineSel",	"f6f3e8",	"444444",	"italic,bold")
 call <SID>X("WarningMsg",	"ff0000",	"",			"")
 			"ErrorMsg
 			"ModeMsg
