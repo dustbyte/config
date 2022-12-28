@@ -28,7 +28,5 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "Plug 'elixir-editors/vim-elixir'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'rodjek/vim-puppet'
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'https://github.pie.apple.com/pcl/pcl-neovim.git'
 
 call plug#end()

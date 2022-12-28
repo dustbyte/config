@@ -246,18 +246,3 @@ nmap <leader>cjd :call CocActionAsync('jumpDefinition')<cr>
 nmap <leader>cjr :call CocActionAsync('jumpReferences')<cr>
 
 au FileType go nmap <leader>ctt :CocCommand go.test.toggle<cr>
-
-lua <<EOF
-local hasConfigs, configs = pcall(require, "nvim-treesitter.configs")
-if hasConfigs then
-  configs.setup {
-    ensure_installed = "pcl",
-    highlight = {
-      enable = true,              -- false will disable the whole extension
-    },
-    indent = {
-      enable = true
-    }
-  }
-end
-EOF
