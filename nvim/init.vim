@@ -56,6 +56,7 @@ set smarttab                            " make <tab> and <backspace> smarter
 set shiftwidth=4                        " indents of 4
 set cino=>4{2u0(0,W4,m1N-st0g0
 set foldlevel=0
+set nofoldenable
 
 "
 " Bindings
@@ -154,6 +155,8 @@ if has('autocmd')
                 \ endif
 
     au BufRead,BufNewFile *.go set filetype=go
+    au BufRead,BufNewFile *.asm set filetype=asm
+    au BufRead,BufNewFile *.inc set filetype=asm
     au BufRead,BufNewFile *.zig set filetype=zig
     au BufRead,BufNewFile *.zir set filetype=zir
     au BufRead,BufNewFile *.wsgi set filetype=python
@@ -170,6 +173,7 @@ if has('autocmd')
     autocmd FileType python setlocal completeopt-=preview
     autocmd FileType ruby setlocal ts=2 sts=2 sw=2
     autocmd FileType sh setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd FileType pcl setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
     "
     " Python
@@ -240,9 +244,13 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " Coc
 
+let g:coc_user_config = {}
+let g:coc_user_config['coc.preferences.jumpCommand'] = ':SplitIfNotOpen4COC'
+
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
-nmap <leader>cjd :call CocActionAsync('jumpDefinition')<cr>
-nmap <leader>cjr :call CocActionAsync('jumpReferences')<cr>
+nmap <leader>jd :call CocActionAsync('jumpDefinition', 'vsplit')<cr>
+nmap <leader>jr :call CocActionAsync('jumpReferences')<cr>
+nmap <leader>go :execute 'silent!!og' @% line(".")<cr>
 
 au FileType go nmap <leader>ctt :CocCommand go.test.toggle<cr>
