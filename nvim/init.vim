@@ -166,6 +166,8 @@ if has('autocmd')
     au BufRead,BufNewFile *.slim set filetype=slim
     au BufRead,BufNewFile nginx.conf* set filetype=conf
     au BufRead,BufNewFile *.pcl normal zR
+    au BufRead,BufNewFile *.asm set filetype=rgbds
+    au BufRead,BufNewFile hardware.inc set filetype=rgbds
 
     autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
@@ -254,3 +256,5 @@ nmap <leader>jr :call CocActionAsync('jumpReferences')<cr>
 nmap <leader>go :execute 'silent!!og' @% line(".")<cr>
 
 au FileType go nmap <leader>ctt :CocCommand go.test.toggle<cr>
+
+let g:NERDCustomDelimiters = { 'rgbds' : { 'left': ';', 'right': '' } }
