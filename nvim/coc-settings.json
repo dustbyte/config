@@ -1,4 +1,17 @@
 {
     "rust-analyzer.inlayHints.parameterHints.enable": false,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd"
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "snippets.ultisnips.pythonPrompt": false,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        }
+    }
 }

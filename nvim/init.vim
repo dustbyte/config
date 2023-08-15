@@ -63,6 +63,7 @@ set nofoldenable
 "
 
 nmap <Leader>ve :edit ~/.config/nvim/init.vim<cr>      " quickly edit this file
+nmap <Leader>vle :edit ~/.config/nvim/nvim_local.vim<cr>      " quickly edit local file
 nmap <Leader>vp :edit ~/.config/nvim/vim-plug/plugins.vim <cr>    " quickly source this file
 nmap <Leader>vc :edit ~/.config/nvim/coc_config.vim <cr>
 nmap <Leader>vs :source ~/.config/nvim/init.vim<cr>
@@ -235,10 +236,10 @@ fun! DownOneLine()
     :execute "normal! I\<cr>\<esc>k0D"
 endfun
 
-let local_file='~/.config/nvim/nvim_local.vim'
-if filereadable(local_file)
-    :execute 'source '.local_file
-endif
+"let local_file=expand('~/.conf/nvim/nvim_local.vim')
+"if filereadable(local_file)
+    ":execute 'source' local_file
+"endif
 
 " Validate completion with enter instead of C-Y
 
@@ -246,12 +247,35 @@ inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "\<CR>"
 
 " Coc
 
+function! SplitIfNotOpen(...)
+    " ref https://github.com/neoclide/coc.nvim/issues/586#issuecomment-701711012
+    let fname = a:1
+    let call = ''
+    if a:0 == 2
+        let fname = a:2
+        let call = a:1
+    endif
+    let bufnum=bufnr(expand(fname))
+    let winnum=bufwinnr(bufnum)
+    if winnum != -1
+        " Jump to existing split
+        exe winnum . "wincmd w"
+    else
+        " Make new split as usual
+        exe "vsplit " . fname
+    endif
+    " Execute the cursor movement command
+    exe call
+endfunction
+
+command! -nargs=+ CocSplitIfNotOpen :call SplitIfNotOpen(<f-args>)
+
 let g:coc_user_config = {}
-let g:coc_user_config['coc.preferences.jumpCommand'] = ':SplitIfNotOpen4COC'
+let g:coc_user_config['coc.preferences.jumpCommand'] = ':CocSplitIfNotOpen'
 
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
-nmap <leader>jd :call CocActionAsync('jumpDefinition', 'vsplit')<cr>
+nmap <leader>jd :call CocActionAsync('jumpDefinition')<cr>
 nmap <leader>jr :call CocActionAsync('jumpReferences')<cr>
 nmap <leader>go :execute 'silent!!og' @% line(".")<cr>
 
