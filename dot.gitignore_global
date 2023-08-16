@@ -42,3 +42,4 @@ ecs-ci
 paperboy/
 .vscode
 .coverage
+.python-version
