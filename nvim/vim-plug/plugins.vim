@@ -15,18 +15,20 @@ call plug#begin('$HOME/.config/nvim/autoload/plugged')
     Plug 'scrooloose/nerdcommenter'
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-surround'
-    "Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go'
     "Plug 'vim-ruby/vim-ruby'
     "Plug 'tpope/vim-rails'
     "Plug 'kchmck/vim-coffee-script'
     Plug 'samsaga2/vim-z80'
     "Plug 'hashivim/vim-terraform'
     Plug 'alfredodeza/pytest.vim'
-    "Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim'
     "Plug 'rhysd/vim-crystal'
     "Plug 'keith/swift.vim'
     "Plug 'elixir-editors/vim-elixir'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'rodjek/vim-puppet'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
 
 call plug#end()
