@@ -277,8 +277,18 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
 nmap <leader>jd :call CocActionAsync('jumpDefinition')<cr>
 nmap <leader>jr :call CocActionAsync('jumpReferences')<cr>
+nmap <leader>rs :call CocActionAsync('rename')<cr>
 nmap <leader>go :execute 'silent!!og' @% line(".")<cr>
 
 au FileType go nmap <leader>ctt :CocCommand go.test.toggle<cr>
 
 let g:NERDCustomDelimiters = { 'rgbds' : { 'left': ';', 'right': '' } }
+
+" FZF
+
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.shellescape(<q-args>),
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
+nmap <Leader>f :GGrep<cr>
