@@ -231,8 +231,7 @@ activate_venv()
 
 go_setup()
 {
-    if [ -d /usr/local/go/bin ]
-    then
+    if command -v go 1>/dev/null 2>&1; then
         export PATH=/usr/local/go/bin:${PATH}
         export GOPATH=$(go env GOPATH)
         export GOBIN=${GOPATH}/bin
