@@ -26,3 +26,7 @@
 	email = pierre@wacrenier.me
 [pull]
 	rebase = true
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig.work
+[includeIf "gitdir:~/jingle/Jingle/"]
+    path = ~/.gitconfig.work
