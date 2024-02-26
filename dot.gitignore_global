@@ -43,3 +43,5 @@ paperboy/
 .vscode
 .coverage
 .python-version
+venv/
+secret_certs

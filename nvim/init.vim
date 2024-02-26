@@ -65,7 +65,7 @@ set nofoldenable
 nmap <Leader>ve :edit ~/.config/nvim/init.vim<cr>      " quickly edit this file
 nmap <Leader>vle :edit ~/.config/nvim/nvim_local.vim<cr>      " quickly edit local file
 nmap <Leader>vp :edit ~/.config/nvim/vim-plug/plugins.vim <cr>    " quickly source this file
-nmap <Leader>vc :edit ~/.config/nvim/coc_config.vim <cr>
+nmap <Leader>vc :edit ~/.config/nvim/coc-settings.json <cr>
 nmap <Leader>vs :source ~/.config/nvim/init.vim<cr>
 nmap <Leader>sp :set paste!<cr>         " toggle paste mode
 
@@ -292,3 +292,8 @@ command! -bang -nargs=* GGrep
   \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 nmap <Leader>f :GGrep<cr>
+
+nmap <Leader>gb :Git blame<cr>
+
+" Maximize window management
+nnoremap <C-W>m <C-W>\| <C-W>_
