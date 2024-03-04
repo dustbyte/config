@@ -76,7 +76,7 @@ check_command()
 
 git_prompt()
 {
-    if check_command git && echo "$PWD" | grep -viqf ${HOME}/.git_banned
+    if check_command git && [ ! -e $HOME/.git_banned ] || echo "$PWD" | grep -viqf ${HOME}/.git_banned 2>/dev/null
     then
         branch=`git symbolic-ref HEAD 2>/dev/null | sed 's/refs\/heads\///g'`
         if [ "$branch" != "" ]
